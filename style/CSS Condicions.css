@@ -1,0 +1,6 @@
+.imagen-pergamino {
+    flex: 2;                  /* Le da más relevancia y espacio al pergamino que a los botones */
+    max-width: 700px;         /* Ajusta este valor en píxeles según el tamaño real de tu imagen */
+    width: 100%;              /* Hace que la imagen sea responsiva y se adapte a su espacio asignado */
+    height: auto;             /* Evita que la imagen se deforme */
+}
