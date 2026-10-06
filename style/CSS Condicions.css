@@ -1,6 +1,19 @@
-.imagen-pergamino {
-    flex: 2;                  /* Le da más relevancia y espacio al pergamino que a los botones */
-    max-width: 700px;         /* Ajusta este valor en píxeles según el tamaño real de tu imagen */
-    width: 100%;              /* Hace que la imagen sea responsiva y se adapte a su espacio asignado */
-    height: auto;             /* Evita que la imagen se deforme */
+.contenedor-condiciones {
+    display: flex;
+    justify-content: center;   /* horizontal: flex-start | center | flex-end */
+    align-items: flex-start;   /* vertical: flex-start | center | flex-end */
+    min-height: 100vh;         /* altura del contenedor (toda la pantalla) */
+    padding: 20px;
+}
+
+.contenedor-condiciones img {
+    /* TAMAÑO */
+    width: 55%;                /* ancho relativo al contenedor */
+    max-width: 800px;          /* límite máximo en píxeles */
+    height: auto;              /* mantiene la proporción */
+
+    /* POSICIÓN (ajuste fino) */
+    position: relative;
+    top: 0;                    /* positivo = baja, negativo = sube */
+    left: 0;                   /* positivo = derecha, negativo = izquierda */
 }
