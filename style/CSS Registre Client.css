@@ -1,0 +1,28 @@
+body{
+    margin: 0;
+    box-sizing: border-box;
+}
+
+#Contenedor .imagen {
+    width: 15em;
+}
+#Contenedor header .contenedor{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+.accionesusuario a{
+    text-decoration: none;
+    color: white;
+}
+#Contenedor header{
+    background-color: #112750;
+}
+.contenedor h2{
+    color: white;
+    margin-right: 2em;
+}
+.accionesusuario{
+    word-spacing: 1em;
+    padding-left: 6em ;
+}
