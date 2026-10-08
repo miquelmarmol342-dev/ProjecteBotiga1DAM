@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Mundo Gamer</title>
+    <link rel="stylesheet" href="../style/contacte_Style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
+</head>
+<body>
+<header id="header">
+    <div class="encabezado_div">
+        <a href="" class="logo_div">
+            <img src="../Imagenes/logo.png" alt="logo" class="logo">
+        </a>
+        <div class="buscador_div">
+            <input type="search" name="buscador" id="buscador" placeholder="Busca juegos,consolas y más...">
+        </div>
+        <div class="acciones_div">
+            <div class="cuenta">
+                <a href="">
+                    <svg width="33px" height="64px" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"
+                         stroke="#000000">
+                        <g id="SVGRepo_bgCarrier" stroke-width="0"></g>
+                        <g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g>
+                        <g id="SVGRepo_iconCarrier">
+                            <path d="M5 21C5 17.134 8.13401 14 12 14C15.866 14 19 17.134 19 21M16 7C16 9.20914 14.2091 11 12 11C9.79086 11 8 9.20914 8 7C8 4.79086 9.79086 3 12 3C14.2091 3 16 4.79086 16 7Z"
+                                  stroke="#ffffff" stroke-width="2" stroke-linecap="round"
+                                  stroke-linejoin="round"></path>
+                        </g>
+                    </svg>
+                </a>
+            </div>
+            <div class="favoritos">
+                <a href="">
+                    <svg width="33px" height="64px" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <g id="SVGRepo_bgCarrier" stroke-width="0"></g>
+                        <g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g>
+                        <g id="SVGRepo_iconCarrier">
+                            <path fill-rule="evenodd" clip-rule="evenodd"
+                                  d="M12 6.00019C10.2006 3.90317 7.19377 3.2551 4.93923 5.17534C2.68468 7.09558 2.36727 10.3061 4.13778 12.5772C5.60984 14.4654 10.0648 18.4479 11.5249 19.7369C11.6882 19.8811 11.7699 19.9532 11.8652 19.9815C11.9483 20.0062 12.0393 20.0062 12.1225 19.9815C12.2178 19.9532 12.2994 19.8811 12.4628 19.7369C13.9229 18.4479 18.3778 14.4654 19.8499 12.5772C21.6204 10.3061 21.3417 7.07538 19.0484 5.17534C16.7551 3.2753 13.7994 3.90317 12 6.00019Z"
+                                  stroke="#ffffff" stroke-width="2" stroke-linecap="round"
+                                  stroke-linejoin="round"></path>
+                        </g>
+                    </svg>
+                </a>
+            </div>
+            <div class="carrito">
+                <a href="">
+                    <svg width="33px" height="64px" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <g id="SVGRepo_bgCarrier" stroke-width="0"></g>
+                        <g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g>
+                        <g id="SVGRepo_iconCarrier">
+                            <path d="M6.29977 5H21L19 12H7.37671M20 16H8L6 3H3M9 20C9 20.5523 8.55228 21 8 21C7.44772 21 7 20.5523 7 20C7 19.4477 7.44772 19 8 19C8.55228 19 9 19.4477 9 20ZM20 20C20 20.5523 19.5523 21 19 21C18.4477 21 18 20.5523 18 20C18 19.4477 18.4477 19 19 19C19.5523 19 20 19.4477 20 20Z"
+                                  stroke="#ffffff" stroke-width="2" stroke-linecap="round"
+                                  stroke-linejoin="round"></path>
+                        </g>
+                    </svg>
+                </a>
+            </div>
+        </div>
+    </div>
+    <div class="secciones_botones">
+        <a href="">
+            <button class="btn-gamer">INICIO</button>
+        </a>
+        <a href="">
+            <button class="btn-gamer">PRODUCTOS</button>
+        </a>
+        <a href="">
+            <button class="btn-gamer">CONSOLAS</button>
+        </a>
+        <a href="">
+            <button class="btn-gamer">ACCESORIOS</button>
+        </a>
+        <a href="">
+            <button class="btn-gamer">OFERTAS</button>
+        </a>
+        <a href="">
+            <button class="btn-gamer">CONTACTO</button>
+        </a>
+    </div>
+</header>
+<form action="" method="get" id="formulario_contacto">
+    <div class="form_mensaje">
+
+        <div class="contenido1_form_mensaje">
+            <h1>!ENVIANOS UN MENSAJE</h1>
+            <img src="../Imagenes/sobre.png" alt="sobre">
+        </div>
+        <div class="contenido2_form_mensaje">
+            <label for="nombre">Nombre completo:</label><br>
+            <input placeholder="Ej: Juan Garcia" type="text" id="nombre" name="nombre" required><br><br>
+
+            <!-- Correo electrónico -->
+            <label for="email">Correo electrónico:</label><br>
+            <input placeholder="TucorreoElectronico@gmail.com" type="email" id="email" name="email" required><br><br>
+
+            <!-- Asunto (varios tipos de pedido) -->
+            <label for="asunto">Asunto del pedido:</label><br>
+            <select id="asunto" name="asunto" required>
+                <option value="">Selecciona un asunto</option>
+                <option value="consulta">Consulta general</option>
+                <option value="nuevo-pedido">Nuevo pedido</option>
+                <option value="seguimiento">Seguimiento de pedido</option>
+                <option value="reclamacion">Reclamación</option>
+            </select><br><br>
+
+            <!-- Mensaje (campo de texto más grande) -->
+            <label for="mensaje">Mensaje:</label><br>
+            <textarea id="mensaje" name="mensaje" rows="4" cols="70" placeholder="Mas detalles sobre su consulta"
+                      required></textarea><br><br>
+        </div>
+        <div class="contenido3_form_mensaje ">
+            <input class="btn-gamer " id="btn-form " type="submit" value="ENVIAR MENSAJE!">
+
+        </div>
+    </div>
+    <div class="form_datos">
+        <div class="contenido1_form_datos">
+            <h1>DATOS DE CONTACTO</h1>
+        </div>
+        <div class="contenido2_form_datos">
+
+
+        <div class="dato-item">
+            <div class="dato-icono">
+                <!-- Pega aquí el SVG del Móvil retro -->
+            </div>
+            <div class="dato-texto">
+                <h4>Teléfono</h4>
+                <p>900 400 129</p>
+            </div>
+        </div>
+
+        <div class="dato-item">
+            <div class="dato-icono">
+                <!-- Pega aquí el SVG del Sobre -->
+            </div>
+            <div class="dato-texto">
+                <h4>Email</h4>
+                <p>MundoGamer@gmail.com</p>
+            </div>
+        </div>
+
+        <div class="dato-item">
+            <div class="dato-icono">
+                <!-- Pega aquí el SVG del Reloj de Arena -->
+            </div>
+            <div class="dato-texto">
+                <h4>Horario</h4>
+                <p>Lunes - Miércoles</p>
+                <span>9:00 - 11:00</span>
+            </div>
+        </div>
+    </div>
+        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d11841.417410874681!2d1.8359510119930535!3d42.099881137568325!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x12a508312251967d%3A0xc8dac010a7b1e524!2s08600%20Berga%2C%20Barcelona!5e0!3m2!1ses!2ses!4v1791402360559!5m2!1ses!2ses"
+                width="200" height="150" style="border:0;" allowfullscreen="" loading="lazy"
+                referrerpolicy="strict-origin-when-cross-origin">
+
+        </iframe>
+        <div class="contenido3_form_datos socials-box">
+            <h3>¡SÍGUENOS EN NUESTRAS REDES!</h3>
+            <div class="social-buttons">
+                <!-- Discord -->
+                <a href="#" class="social-btn btn-discord" aria-label="Discord">
+                    <svg viewBox="0 0 24 24" width="24">
+                        <path d="M20.3,4.4 C18.7,3.6 17,3.1 15.2,2.8 C15,3.2 14.8,3.6 14.6,4 C12.7,3.7 10.8,3.7 9,4 C8.8,3.6 8.6,3.2 8.4,2.8 C6.6,3.1 4.9,3.6 3.3,4.4 C0.1,9.2 -0.7,14 0.4,18.6 C2.5,20.2 4.6,21.1 6.6,21.8 C7.1,21.1 7.6,20.4 8,19.6 C7.3,19.3 6.6,19 5.9,18.6 C6.1,18.5 6.3,18.3 6.4,18.1 C10.1,19.8 14.1,19.8 17.7,18.1 C17.9,18.3 18.1,18.5 18.2,18.6 C17.5,19 16.8,19.3 16.1,19.6 C16.5,20.4 17,21.1 17.5,21.8 C19.5,21.1 21.6,20.2 23.7,18.6 C25,13.3 23.6,8.6 20.3,4.4 Z M8.1,15.1 C6.9,15.1 5.9,14 5.9,12.6 C5.9,11.2 6.9,10.1 8.1,10.1 C9.3,10.1 10.3,11.2 10.3,12.6 C10.3,14 9.3,15.1 8.1,15.1 Z M15.9,15.1 C14.7,15.1 13.7,14 13.7,12.6 C13.7,11.2 14.7,10.1 15.9,10.1 C17.1,10.1 18.1,11.2 18.1,12.6 C18.1,14 17.1,15.1 15.9,15.1 Z"
+                              fill="#fff" stroke="#000" stroke-width="1.5"/>
+                    </svg>
+                </a>
+                <!-- Instagram -->
+                <a href="#" class="social-btn btn-instagram" aria-label="Instagram">
+                    <svg viewBox="0 0 24 24" width="24">
+                        <path d="M12,2.2c3.2,0,3.6,0,4.9,0.1c3,0.1,4.4,1.5,4.5,4.5c0.1,1.3,0.1,1.6,0.1,4.9s0,3.6-0.1,4.9c-0.1,3-1.5,4.4-4.5,4.5c-1.3,0.1-1.6,0.1-4.9,0.1s-3.6,0-4.9-0.1c-3-0.1-4.4-1.5-4.5-4.5C2.1,15.3,2,15,2,11.7s0-3.6,0.1-4.9c0.1-3,1.5-4.4,4.5-4.5C8.4,2.2,8.7,2.2,12,2.2 M12,0.2C8.7,0.2,8.3,0.2,7,0.3C3.1,0.5,0.9,2.7,0.7,6.6C0.5,7.9,0.5,8.3,0.5,11.6s0,3.7,0.1,5C0.9,20.5,3.1,22.7,7,22.9c1.3,0.1,1.7,0.1,5,0.1s3.7,0,5-0.1c3.9-0.2,6.1-2.4,6.3-6.3c0.1-1.3,0.1-1.7,0.1-5s0-3.7-0.1-5c-0.2-3.9-2.4-6.1-6.3-6.3C15.7,0.2,15.3,0.2,12,0.2L12,0.2z"
+                              fill="#fff" stroke="#000" stroke-width="1.5"/>
+                        <path d="M12,5.8c-3.2,0-5.8,2.6-5.8,5.8s2.6,5.8,5.8,5.8s5.8-2.6,5.8-5.8S15.2,5.8,12,5.8z M12,15.4c-2,0-3.6-1.6-3.6-3.6s1.6-3.6,3.6-3.6s3.6,1.6,3.6,3.6S14,15.4,12,15.4z"
+                              fill="#fff" stroke="#000" stroke-width="1.5"/>
+                        <circle cx="17.5" cy="6.5" r="1.4" fill="#fff" stroke="#000" stroke-width="1"/>
+                    </svg>
+                </a>
+                <!-- Youtube -->
+                <a href="#" class="social-btn btn-youtube" aria-label="YouTube">
+                    <svg viewBox="0 0 24 24" width="24">
+                        <path d="M23.5,6.4c-0.3-1.2-1.2-2.1-2.4-2.4C19,3.5,12,3.5,12,3.5s-7,0-9.1,0.5C0.7,4.3,0.3,5.2,0,6.4C-0.5,8.5-0.5,12-0.5,12s0,3.5,0.5,5.6c0.3,1.2,1.2,2.1,2.4,2.4C7,20.5,12,20.5,12,20.5s7,0,9.1-0.5c1.2-0.3,2.1-1.2,2.4-2.4c0.5-2.1,0.5-5.6,0.5-5.6S24,8.5,23.5,6.4z"
+                              fill="#fff" stroke="#000" stroke-width="2"/>
+                        <path d="M9.5,15.5l6.5-3.5L9.5,8.5Z" fill="#FF0000" stroke="#000" stroke-width="1.5"/>
+                    </svg>
+                </a>
+                <!-- Tiktok -->
+                <a href="#" class="social-btn btn-tiktok" aria-label="TikTok">
+                    <svg viewBox="0 0 24 24" width="24">
+                        <path d="M12.5,2v13.5a3.5,3.5,0,1,1-5,-3.1c0.1-0.1,0.2-0.1,0.2-0.1V8.1h0a7.5,7.5,0,0,0,0,14.9,7.5,7.5,0,0,0,6.2-3.3c3.4,0,3.6-4.1,3.6-4.1a5.4,5.4,0,0,0,3.5,1.2v-4a2.9,2.9,0,0,1-3.5-1.5,5,5,0,0,1,0-4.3h-5"
+                              fill="#fff" stroke="#000" stroke-width="1.5"/>
+                    </svg>
+                </a>
+            </div>
+        </div>
+    </div>
+</form>
+
+</body>
+</html>
