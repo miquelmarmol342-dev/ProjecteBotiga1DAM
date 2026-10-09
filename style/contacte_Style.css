@@ -11,7 +11,7 @@
     /* Otros colores recurrentes */
     --rojo-principal: #de1115;
     --borde-oscuro: #0d1117;
-    --texto-claro: whitesmoke;
+    --texto-claro: rgb(255 255 255 / 0.76);
 }
 
 /* le quitamos todo para que sea mas facil hacer los calculos */
@@ -123,7 +123,7 @@ header {
 /* 1. CONTENEDOR PRINCIPAL */
 #formulario_contacto {
     display: flex;
-    padding: 5%;
+    padding: 3% 5%;
     gap: 2%;
     background-color: #58595c;
     /* formas para el fondo */
@@ -138,6 +138,7 @@ header {
     width: 50%;
     display: flex;
     flex-direction: column;
+    justify-content: space-evenly;
     background-color: #ffffff;
     padding: 5%;
     font-family: cursive;
@@ -159,8 +160,12 @@ header {
     border-top: var(--azul-principal) solid 2px;
     padding-bottom: 10px;
     padding-top: 12px;
-    width: 100%;
+    width: 105%;
     border-radius: 5px;
+
+}
+.form_mensaje h1{
+   padding: 15px;
 }
 
 .form_mensaje label,
@@ -169,11 +174,15 @@ header {
     font-family: Arial, sans-serif;
     font-weight: bold;
     font-size: 20px;
-    margin-bottom: -18px;
+    margin-bottom: -12px;
     margin-top: 5px;
     color: var(--azul-principal);
 }
+#texa_area_label{
 
+    margin-top: -20px;
+
+}
 .form_mensaje label {
     width: 100%;
     display: flex;
@@ -185,16 +194,20 @@ header {
     display: flex;
     justify-content: center;
     align-items: center;
-    width: 110%;
-    height: 100px;
-    margin-top: -28px;
+    width: 115%;
+    height: 80px;
+    margin-top: -10px;
+
 }
 
 .contenido1_form_mensaje img {
     width: 100px;
-    margin-bottom: 60px;
-}
+    margin-bottom: 70px;
 
+}
+.contenido2_form_mensaje{
+
+}
 .form_datos h3 {
     text-align: center;
     align-items: baseline;
@@ -210,7 +223,7 @@ header {
 .form_mensaje #email,
 #asunto,
 #nombre {
-    height: 50px;
+    height: 60px;
 }
 
 #asunto {
@@ -219,7 +232,7 @@ header {
     color: var(--texto-claro);
 }
 
-/* inputs unificados */
+/* inputs juntos */
 .form_mensaje input[type="text"],
 .form_mensaje input[type="email"],
 .form_mensaje select,
@@ -236,7 +249,10 @@ header {
     outline: none;
     transition: border-color 0.3s;
 }
+.form_mensaje textarea{
+    height: 60px;
 
+}
 .form_mensaje input:focus,
 .form_mensaje select:focus,
 .form_mensaje textarea:focus {
@@ -244,12 +260,14 @@ header {
 }
 
 #formulario_contacto .btn-gamer {
-    width: 100%;
+    width: 60%;
     height: 60px;
     border-radius: 15px;
     font-family: 'Press Start 2P', cursive;
-    color: var(--amarillo-principal);
-    background-color: var(--azul-principal);
+    color: var(--azul-principal);
+    background-color: var(--amarillo-principal);
+    font-size: 13px;
+
 }
 
 /* --- REDES SOCIALES --- */
@@ -296,10 +314,21 @@ header {
 }
 
 /* Colores Redes */
-.btn-discord { background-color: #5865F2; }
-.btn-instagram { background-color: #E1306C; }
-.btn-youtube { background-color: #FF0000; }
-.btn-tiktok { background-color: #000000; }
+.btn-discord {
+    background-color: #5865F2;
+}
+
+.btn-instagram {
+    background-color: #E1306C;
+}
+
+.btn-youtube {
+    background-color: #FF0000;
+}
+
+.btn-tiktok {
+    background-color: #000000;
+}
 
 .social-btn svg {
     width: 22px;
@@ -319,7 +348,28 @@ header {
 }
 
 .contenido1_form_datos {
-    height: 13%;
+    height: 50px;
+    text-align: center;
+    margin-top: 0;
+    display: flex;
+    margin-bottom: 30px;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+
+}
+.contenido1_form_datos h1{
+    padding: 0;
+    height: 100%;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    padding: 15px;
+
 }
 
 iframe {
@@ -353,14 +403,14 @@ iframe {
 .dato-texto h4 {
     margin: 0;
     font-size: 19px;
-    color: #ffffff;
+    color: rgb(255 255 255 / 0.86);
 }
 
 .dato-texto p {
     margin: 2px 0 0;
     font-size: 16px;
     font-weight: bold;
-    color: rgb(255 255 255);
+    color: rgb(255 255 255 / 0.78);
 }
 
 .dato-texto span {
@@ -370,6 +420,10 @@ iframe {
 
 .contenido3_form_datos {
     padding: 0;
+}
+.contenido3_form_mensaje{
+    display: flex;
+    justify-content: center;
 }
 
 .hijo_ontenido2_form_datos svg {
