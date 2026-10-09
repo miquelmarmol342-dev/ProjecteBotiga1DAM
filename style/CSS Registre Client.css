@@ -1,11 +1,15 @@
 body {
     margin: 0;
     box-sizing: border-box;
+    font-family: "Paytone One", sans-serif;
 }
 
 #Contenedor header {
     background-color: #112750;
     padding: 10px 10px;
+}
+#Contenedor{
+    min-height: 100vh;
 }
 
 #Contenedor header .contenedor {
@@ -69,6 +73,7 @@ form.Buscador_div {
     background-color: #DE0E16;
     margin: 0;
     padding: 10px;
+
 }
 .menu .boton{
     text-decoration: none;
@@ -83,4 +88,40 @@ form.Buscador_div {
 }
 .menu .botonAccesorios, .botonConsolas, .botonContacto, .botonOfertas, .botonProductos{
     background-color: white;
+}
+.formularioRegistro h1, h2{
+    margin: 0;
+}
+
+.formularioRegistro{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    font-size: 1em;
+    flex-grow: 1;
+    width: auto;
+}
+.contenedorFormulario{
+    display: flex;
+    flex-direction: column;
+    margin-top: 30px;
+}
+.TitulosContenedor{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 3em;
+}
+.filaForm{
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+.contenedorPrincipal{
+    display: flex;
+    flex-wrap: wrap;
+    background-color: #F7F5F8;
+}
+.SubtitulosContenedor{
+    margin-top: 2em;
 }
