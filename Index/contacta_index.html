@@ -5,12 +5,40 @@
     <title>Mundo Gamer</title>
     <link rel="stylesheet" href="../style/contacte_Style.css">
     <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
+
 </head>
 <body>
+
+
 <header id="header">
+
+    <div class="muñeco-btn" >
+        <img src="../Imagenes/señalador-burguer.png" alt="" width="316">
+    </div>
     <div class="encabezado_div">
+        <!-- Botón de 3 rayas (Hamburguesa) -->
+        <div class="menu-btn-padre ">
+            <button id="menu-btn" class="menu-btn btn-gamer">
+                <svg viewBox="0 0 32 22" width="30" height="30" xmlns="http://www.w3.org/2000/svg">
+                    <path fill="#041631" d="M30,22 C31.1,22 32,21.1 32,20 C32,18.9 31.1,18 30,18 L2,18 C0.9,18 0,18.9 0,20 C0,21.1 0.9,22 2,22 L30,22 Z M30,13 C31.1,13 32,12.1 32,11 C32,9.9 31.1,9 30,9 L2,9 C0.9,9 0,9.9 0,11 C0,12.1 0.9,13 2,13 L30,13 Z M30,4 C31.1,4 32,3.1 32,2 C32,0.9 31.1,0 30,0 L2,0 C0.9,0 0,0.9 0,2 C0,3.1 0.9,4 2,4 L30,4 Z" />
+                </svg>
+            </button>
+        </div>
+
+        <nav id="sidebar" class="sidebar">
+
+        <ul>
+            <li><a href="#"><button class="btn-gamer">INICIO</button></a></li>
+            <li><a href="#"><button class="btn-gamer">PRODUCTOS</button></a></li>
+            <li><a href="#"><button class="btn-gamer">CONSOLAS</button></a></li>
+            <li><a href="#"><button class="btn-gamer">CONTACTO</button></a></li>
+            <li><a href="#"><button class="btn-gamer">LEGAL</button></a></li>
+        </ul>
+    </nav>
+        <!-- Fondo oscuro que aparece al abrir el menú asi creo que se ve mas profesioanl -->
+        <div id="overlay" class="overlay"></div>
         <a href="" class="logo_div">
-            <img src="../Imagenes/logo.png" alt="logo" class="logo">
+            <img src="../Imagenes/logo.png" alt="logo" class="logo" >
         </a>
         <div class="buscador_div">
             <input type="search" name="buscador" id="buscador" placeholder="Busca juegos,consolas y más...">
@@ -59,7 +87,7 @@
             </div>
         </div>
     </div>
-   
+
     <div class="secciones_botones">
         <a href="">
             <button class="btn-gamer">INICIO</button>
@@ -71,14 +99,12 @@
             <button class="btn-gamer">CONSOLAS</button>
         </a>
         <a href="">
-            <button class="btn-gamer">ACCESORIOS</button>
-        </a>
-        <a href="">
-            <button class="btn-gamer">OFERTAS</button>
+            <button class="btn-gamer">LEGAL</button>
         </a>
         <a href="">
             <button class="btn-gamer">CONTACTO</button>
         </a>
+
     </div>
 </header>
 <form action="" method="get" id="formulario_contacto">
@@ -124,37 +150,37 @@
         <div class="contenido2_form_datos">
 
 
-        <div class="dato-item">
-            <div class="dato-icono">
-                <!-- Pega aquí el SVG del Móvil retro -->
+            <div class="dato-item">
+                <div class="dato-icono">
+                    <!-- Pega aquí el SVG del Móvil retro -->
+                </div>
+                <div class="dato-texto">
+                    <h4>Teléfono</h4>
+                    <p>900 400 129</p>
+                </div>
             </div>
-            <div class="dato-texto">
-                <h4>Teléfono</h4>
-                <p>900 400 129</p>
-            </div>
-        </div>
 
-        <div class="dato-item">
-            <div class="dato-icono">
-                <!-- Pega aquí el SVG del Sobre -->
+            <div class="dato-item">
+                <div class="dato-icono">
+                    <!-- Pega aquí el SVG del Sobre -->
+                </div>
+                <div class="dato-texto">
+                    <h4>Email</h4>
+                    <p>MundoGamer@gmail.com</p>
+                </div>
             </div>
-            <div class="dato-texto">
-                <h4>Email</h4>
-                <p>MundoGamer@gmail.com</p>
-            </div>
-        </div>
 
-        <div class="dato-item">
-            <div class="dato-icono">
-                <!-- Pega aquí el SVG del Reloj de Arena -->
-            </div>
-            <div class="dato-texto">
-                <h4>Horario</h4>
-                <p>Lunes - Miércoles</p>
-                <span>9:00 - 11:00</span>
+            <div class="dato-item">
+                <div class="dato-icono">
+                    <!-- Pega aquí el SVG del Reloj de Arena -->
+                </div>
+                <div class="dato-texto">
+                    <h4>Horario</h4>
+                    <p>Lunes - Miércoles</p>
+                    <span>9:00 - 11:00</span>
+                </div>
             </div>
         </div>
-    </div>
         <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d11841.417410874681!2d1.8359510119930535!3d42.099881137568325!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x12a508312251967d%3A0xc8dac010a7b1e524!2s08600%20Berga%2C%20Barcelona!5e0!3m2!1ses!2ses!4v1791402360559!5m2!1ses!2ses"
                 width="200" height="150" style="border:0;" allowfullscreen="" loading="lazy"
                 referrerpolicy="strict-origin-when-cross-origin">
@@ -199,6 +225,47 @@
         </div>
     </div>
 </form>
+<!-- FOOTER DE MUNDO GAMER -->
+<footer class="footer-gamer">
+    <div class="footer-contenido">
+        <a href="" class="logo_div">
+        <img src="../Imagenes/logo.png"  width="324">
+    </a>
+        <!-- Columna 1: Sobre Nosotros -->
+        <div class="footer-columna">
+            <h3 class="footer-titulo">MUNDO GAMER</h3>
+            <p>Tu tienda definitiva para juegos, consolas y accesorios retro y de nueva generación. Sube de nivel tu setup con nosotros.</p>
+        </div>
 
+        <!-- Columna 2: Enlaces Rápidos -->
+        <div class="footer-columna">
+            <h3 class="footer-titulo">SECCIONES</h3>
+            <ul class="footer-links">
+                <li><a href="#">Inicio</a></li>
+                <li><a href="#">Nuevos Productos</a></li>
+                <li><a href="#">Ofertas Especiales</a></li>
+                <li><a href="#">Contacto</a></li>
+            </ul>
+        </div>
+
+        <!-- Columna 3: Soporte -->
+        <div class="footer-columna">
+            <h3 class="footer-titulo">SOPORTE</h3>
+            <ul class="footer-links">
+                <li><a href="#">Preguntas Frecuentes</a></li>
+                <li><a href="#">Política de Envíos</a></li>
+                <li><a href="#">Devoluciones</a></li>
+                <li><a href="#">Aviso Legal</a></li>
+            </ul>
+        </div>
+    </div>
+
+    <!-- Barra inferior de Copyright -->
+    <div class="footer-bottom">
+        <p>&copy; 2026 Mundo Gamer. Todos los derechos reservados.</p>
+    </div>
+</footer>
+<!--no borrar no tocar no mover <3-->
+<script src="../script/script.js" ></script>
 </body>
 </html>
