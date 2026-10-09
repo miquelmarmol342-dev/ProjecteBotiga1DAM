@@ -1,33 +1,29 @@
-body {
-    margin: 0;
-}
 
-
-.cabecera {
+.pagina-condiciones .cabecera-cond {
     display: flex;
     justify-content: space-between;
     align-items: flex-end;
     padding: 20px 40px 0;
 }
 
-.titulo-condiciones {
+.pagina-condiciones .titulo-cond {
     flex: 1;
     text-align: center;
+
 }
 
-h1 {
-    margin: 0;
+.pagina-condiciones h1 {
     font-size: 56px;
     color: #1b2a4a;
 }
 
-h2 {
+.pagina-condiciones h2 {
     margin: 5px 0 20px;
     font-size: 28px;
     color: #1b2a4a;
 }
 
-.mago {
+.pagina-condiciones .mago {
     width: 320px;
     max-width: 100%;
     height: auto;
@@ -37,7 +33,7 @@ h2 {
 }
 
 
-.contenedor-condiciones {
+.pagina-condiciones .contenedor-cond {
     display: grid;
     grid-template-columns: 38% 1fr;
     gap: 40px;
@@ -46,29 +42,45 @@ h2 {
 }
 
 
+.pagina-condiciones .menu-cond {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+}
+
+.pagina-condiciones .boton-cond {
+
+    padding: 14px 20px;
+    background: #e3ebf0;
+    border: 3px solid #1b2a4a;
+    border-radius: 12px;
+    color: #1b2a4a;
+    font-size: 20px;
+    font-weight: bold;
+    text-decoration: none;
+
+}
+
+.pagina-condiciones .boton-cond:hover {
+    background: #ffd23f;
+}
 
 
-
-
-
-
-.pergamino {
+.pagina-condiciones .pergamino {
     background: url("../imagenes/Pergamino.jpg") no-repeat center / 100% 100%;
     height: 560px;
-    box-sizing: border-box;
     padding: 90px 80px 50px;
     overflow-y: auto;
 }
 
-.pergamino h3 {
+.pagina-condiciones .pergamino h3 {
     margin: 0 0 5px;
-    font-size: 25px;
+    font-size: 18px;
     color: #3b2200;
 }
 
-.pergamino p {
+.pagina-condiciones .pergamino p {
     margin: 0 0 15px;
-    font-size: 19px;
+    font-size: 16px;
     color: #3b2200;
-
 }
