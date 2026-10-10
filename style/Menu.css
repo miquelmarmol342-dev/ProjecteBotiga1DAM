@@ -1,0 +1,98 @@
+* {
+    margin: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Arial, sans-serif;
+}
+
+
+.encabezado_div {
+    background-color: #112650;
+    width: 100%;
+    height: 110px;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+}
+
+.logo_div {
+    width: 23%;
+    height: 100%;
+}
+
+.logo {
+    width: 40%;
+    height: 100%;
+    margin-left: 40px;
+}
+
+.buscador_div {
+    width: 50%;
+}
+
+#buscador {
+    height: 50px;
+    width: 100%;
+    padding: 10px 10px 10px 45px;
+    border: 1px solid #f5f5f5;
+    border-radius: 10px;
+    outline: none;
+    color: #000000;
+    font-size: 12px;
+    background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' version='1' viewBox='0 0 22 22' %3E%3Cpath d='M14.92 14.07l6.04 6.04c.23.24.23.62 0 .86-.24.23-.62.23-.85 0l-6.03-6.04C12.57 16.22 10.63 17 8.5 17 3.8 17 0 13.2 0 8.5S3.8 0 8.5 0 17 3.8 17 8.5c0 2.13-.78 4.08-2.08 5.57zM8.5 16c4.14 0 7.5-3.36 7.5-7.5C16 4.36 12.64 1 8.5 1 4.36 1 1 4.36 1 8.5 1 12.64 4.36 16 8.5 16z' fill='' /%3E%3C/svg%3E");
+    background-repeat: no-repeat;
+    background-position: 8px center;
+    background-size: 1.675em;
+    background-color: whitesmoke;
+    font-family: 'Press Start 2P', monospace;
+}
+
+.acciones_div {
+    display: flex;
+    width: 25%;
+    justify-content: space-evenly;
+    margin: 0 auto;
+}
+
+.acciones_div svg:hover {
+    transform: scale(1.24);
+}
+
+/* ---------- BARRA ROJA: botones ---------- */
+.secciones_botones {
+    background-color: #de1115;
+    height: 60px;
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    padding-left: 50px;
+    padding-right: 50px;
+}
+
+.btn-gamer {
+    padding: 10px 18px;
+    border-radius: 6px;
+    border: 2px solid #000;
+    background-color: #ffffff;
+    font-family: 'Press Start 2P', monospace;
+    font-size: 11px;
+    letter-spacing: 0.5px;
+    transition: all 0.1s ease;
+    box-shadow: 0px 4px 0px #000000;
+    color: #112650;
+    cursor: pointer;
+}
+
+.btn-gamer:hover {
+    background-color: #fff3cd;
+    transform: translateY(-2px);
+    box-shadow: 0px 6px 0px #000000;
+}
+
+.btn-gamer:active {
+    transform: translateY(3px);
+    box-shadow: 0px 1px 0px #000000;
+}
