@@ -11,7 +11,7 @@
     /* Otros colores recurrentes */
     --rojo-principal: #de1115;
     --borde-oscuro: #0d1117;
-    --texto-claro: whitesmoke;
+    --texto-claro: rgb(255 255 255 / 0.76);
 }
 
 /* le quitamos todo para que sea mas facil hacer los calculos */
@@ -22,19 +22,33 @@
 
 body {
     background-size: 100%;
+    background-color: #58595c;
+    /* formas para el fondo */
+    background-repeat: repeat;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='120' height='120' viewBox='0 0 120 120'%3E%3Cg fill='black' opacity='0.4'%3E%3C!-- Estrella --%3E%3Cpath d='M30,20 l4,12 h12 l-10,7 l4,12 l-10,-7 l-10,7 l4,-12 l-10,-7 h12 z'/%3E%3C!-- Corazón --%3E%3Cpath d='M85,35 a6,6 0 0,0 -12,0 a6,6 0 0,0 -12,0 q0,12 12,18 q12,-6 12,-18 z'/%3E%3C!-- Mando --%3E%3Crect x='40' y='80' width='30' height='18' rx='8'/%3E%3Ccircle cx='48' cy='89' r='2.5' fill='%23E8B402FF'/%3E%3Ccircle cx='62' cy='89' r='2.5' fill='%23E8B402FF'/%3E%3C/g%3E%3C/svg%3E");
+    background-size: 150px 150px;
 }
 
 header {
+    position: sticky;
+    top: 0;
+    left: 0;
 }
 
 .encabezado_div {
     background-color: var(--azul-principal);
     width: 100%;
-    height: 110px;
+    height: 150px;
     display: flex;
     flex-direction: row;
     justify-content: center;
     align-items: center;
+    border-bottom: 5px solid var(--rojo-principal);
+}
+
+.logo_div {
+    width: 205px;
+    height: 100px;
 }
 
 .logo_div {
@@ -46,8 +60,10 @@ header {
 }
 
 .logo {
-    width: 50%;
-    height: 140%;
+
+    width: 250px;
+    height: auto;
+    margin-bottom: 20px;
 }
 
 .buscador_div {
@@ -123,13 +139,9 @@ header {
 /* 1. CONTENEDOR PRINCIPAL */
 #formulario_contacto {
     display: flex;
-    padding: 5%;
+    padding: 3% 5%;
     gap: 2%;
-    background-color: #58595c;
-    /* formas para el fondo */
-    background-repeat: repeat;
-    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='120' height='120' viewBox='0 0 120 120'%3E%3Cg fill='black' opacity='0.4'%3E%3C!-- Estrella --%3E%3Cpath d='M30,20 l4,12 h12 l-10,7 l4,12 l-10,-7 l-10,7 l4,-12 l-10,-7 h12 z'/%3E%3C!-- Corazón --%3E%3Cpath d='M85,35 a6,6 0 0,0 -12,0 a6,6 0 0,0 -12,0 q0,12 12,18 q12,-6 12,-18 z'/%3E%3C!-- Mando --%3E%3Crect x='40' y='80' width='30' height='18' rx='8'/%3E%3Ccircle cx='48' cy='89' r='2.5' fill='%23E8B402FF'/%3E%3Ccircle cx='62' cy='89' r='2.5' fill='%23E8B402FF'/%3E%3C/g%3E%3C/svg%3E");
-    background-size: 150px 150px;
+
     margin: 0;
 }
 
@@ -138,6 +150,7 @@ header {
     width: 50%;
     display: flex;
     flex-direction: column;
+    justify-content: space-evenly;
     background-color: #ffffff;
     padding: 5%;
     font-family: cursive;
@@ -159,8 +172,13 @@ header {
     border-top: var(--azul-principal) solid 2px;
     padding-bottom: 10px;
     padding-top: 12px;
-    width: 100%;
+    width: 105%;
     border-radius: 5px;
+
+}
+
+.form_mensaje h1 {
+    padding: 15px;
 }
 
 .form_mensaje label,
@@ -169,9 +187,15 @@ header {
     font-family: Arial, sans-serif;
     font-weight: bold;
     font-size: 20px;
-    margin-bottom: -18px;
+    margin-bottom: -12px;
     margin-top: 5px;
     color: var(--azul-principal);
+}
+
+#texa_area_label {
+
+    margin-top: -20px;
+
 }
 
 .form_mensaje label {
@@ -185,14 +209,20 @@ header {
     display: flex;
     justify-content: center;
     align-items: center;
-    width: 110%;
-    height: 100px;
-    margin-top: -28px;
+    width: 115%;
+    height: 80px;
+    margin-top: -10px;
+
 }
 
 .contenido1_form_mensaje img {
     width: 100px;
-    margin-bottom: 60px;
+    margin-bottom: 70px;
+
+}
+
+.contenido2_form_mensaje {
+
 }
 
 .form_datos h3 {
@@ -210,7 +240,7 @@ header {
 .form_mensaje #email,
 #asunto,
 #nombre {
-    height: 50px;
+    height: 60px;
 }
 
 #asunto {
@@ -219,7 +249,7 @@ header {
     color: var(--texto-claro);
 }
 
-/* inputs unificados */
+/* inputs juntos */
 .form_mensaje input[type="text"],
 .form_mensaje input[type="email"],
 .form_mensaje select,
@@ -237,6 +267,11 @@ header {
     transition: border-color 0.3s;
 }
 
+.form_mensaje textarea {
+    height: 60px;
+
+}
+
 .form_mensaje input:focus,
 .form_mensaje select:focus,
 .form_mensaje textarea:focus {
@@ -244,12 +279,14 @@ header {
 }
 
 #formulario_contacto .btn-gamer {
-    width: 100%;
+    width: 60%;
     height: 60px;
     border-radius: 15px;
     font-family: 'Press Start 2P', cursive;
-    color: var(--amarillo-principal);
-    background-color: var(--azul-principal);
+    color: var(--azul-principal);
+    background-color: var(--amarillo-principal);
+    font-size: 13px;
+
 }
 
 /* --- REDES SOCIALES --- */
@@ -296,10 +333,21 @@ header {
 }
 
 /* Colores Redes */
-.btn-discord { background-color: #5865F2; }
-.btn-instagram { background-color: #E1306C; }
-.btn-youtube { background-color: #FF0000; }
-.btn-tiktok { background-color: #000000; }
+.btn-discord {
+    background-color: #5865F2;
+}
+
+.btn-instagram {
+    background-color: #E1306C;
+}
+
+.btn-youtube {
+    background-color: #FF0000;
+}
+
+.btn-tiktok {
+    background-color: #000000;
+}
 
 .social-btn svg {
     width: 22px;
@@ -319,7 +367,29 @@ header {
 }
 
 .contenido1_form_datos {
-    height: 13%;
+    height: 50px;
+    text-align: center;
+    margin-top: 0;
+    display: flex;
+    margin-bottom: 30px;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+
+}
+
+.contenido1_form_datos h1 {
+    padding: 0;
+    height: 100%;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    padding: 15px;
+
 }
 
 iframe {
@@ -353,14 +423,14 @@ iframe {
 .dato-texto h4 {
     margin: 0;
     font-size: 19px;
-    color: #ffffff;
+    color: rgb(255 255 255 / 0.86);
 }
 
 .dato-texto p {
     margin: 2px 0 0;
     font-size: 16px;
     font-weight: bold;
-    color: rgb(255 255 255);
+    color: rgb(255 255 255 / 0.78);
 }
 
 .dato-texto span {
@@ -372,5 +442,249 @@ iframe {
     padding: 0;
 }
 
+.contenido3_form_mensaje {
+    display: flex;
+    justify-content: center;
+}
+
 .hijo_ontenido2_form_datos svg {
+}
+
+/* vamos hacer un menu de slide o sea el tipico de hamburguesita*/
+.menu-btn {
+    font-size: 30px;
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 15px;
+    position: fixed; /* Se queda fijo al hacer scroll */
+    top: 10px;
+    left: 10px;
+    z-index: 100; /* Asegura que quede por encima del texto */
+    color: var(--amarillo-principal);
+    display: none;
+}
+
+/* Menú Lateral (Oculto por defecto) */
+.sidebar {
+    position: fixed;
+    top: 0px;
+    left: 0;
+    width: 250px;
+    height: 100vh; /* Ocupa toda la altura de la pantalla */
+    background-color: #222;
+    color: white;
+    padding-top: 70px;
+
+    /* El truco: lo movemos fuera de la pantalla hacia la izquierda */
+    transform: translateX(-100%);
+    /* Definimos una animación suave de 0.3 segundos */
+    transition: transform 0.3s ease;
+    z-index: 200; /* Se coloca por encima de todo */
+}
+
+/* Estilos de los enlaces del menú */
+.sidebar h2 {
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.sidebar ul {
+    list-style: none;
+}
+
+.sidebar ul li a {
+    display: block;
+    padding: 15px 20px;
+    color: white;
+    text-decoration: none;
+    font-size: 18px;
+    transition: background 0.2s;
+}
+
+.sidebar ul li a:hover {
+    background-color: #444;
+}
+
+/* Clase que añadiremos con JavaScript para abrir el menú */
+.sidebar.abierto {
+    transform: translateX(0); /* Lo devuelve a su posición normal */
+}
+
+/* Fondo Oscuro (Oculto por defecto) */
+.overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100vh;
+    background-color: rgba(0, 0, 0, 0.6);
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.3s ease;
+    z-index: 150; /* Queda por debajo del menú pero encima del contenido */
+}
+
+/* Clase que añadiremos con JavaScript para activar el fondo */
+.overlay.activo {
+    opacity: 1;
+    visibility: visible;
+}
+
+.content {
+    padding: 80px 20px;
+}
+
+/*footer inprovisado mio*/
+.footer-gamer {
+    /* Usamos tu azul y una línea roja superior para separar */
+    background-color: var(--azul-principal);
+    color: var(--texto-claro);
+    border-top: 5px solid var(--rojo-principal);
+    padding-top: 50px;
+    margin-top: 60px; /* Separa el footer del formulario de arriba */
+    font-family: Arial, sans-serif;
+}
+
+.footer-contenido {
+    display: flex;
+    justify-content: space-around;
+    flex-wrap: wrap; /* Permite que los elementos bajen si no caben */
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+    gap: 30px;
+}
+
+.footer-columna {
+    width: 25%;
+    min-width: 250px; /* Asegura que no se aplasten demasiado */
+}
+
+.footer-titulo {
+    font-family: 'Press Start 2P', monospace;
+    font-size: 13px;
+    color: var(--amarillo-principal);
+    margin-bottom: 25px;
+    line-height: 1.5;
+}
+
+.footer-columna p {
+    font-size: 15px;
+    line-height: 1.6;
+}
+
+.footer-links {
+    list-style: none;
+    padding: 0;
+}
+
+.footer-links li {
+    margin-bottom: 15px;
+}
+
+.footer-links a {
+    color: var(--texto-claro);
+    text-decoration: none;
+    font-size: 15px;
+    transition: color 0.2s, transform 0.2s;
+    display: inline-block; /* Necesario para que funcione el transform */
+}
+
+/* Efecto hover: se pone amarillo y se mueve un poco a la derecha */
+.footer-links a:hover {
+    color: var(--amarillo-principal);
+    transform: translateX(8px);
+}
+
+.footer-bottom {
+    background-color: var(--borde-oscuro);
+    text-align: center;
+    padding: 20px 10px;
+    margin-top: 40px;
+    font-size: 13px;
+    color: #aaa5a5;
+}
+
+/*empezamos con el responsiveeeeeeeeeeeeeeeeeeeeeeeeeee*/
+
+.muñeco-btn {
+    display: none;
+}
+
+@media screen and (max-width: 900px) {
+    .menu-btn {
+        display: flex;
+        justify-content: flex-end;
+        background-color: var(--amarillo-principal);
+
+
+    }
+
+    /* es como crear una funcion pero en css :))))*/
+    @keyframes flotar {
+        0% {
+            transform: translateY(0px);
+        }
+        50% {
+            transform: translateY(-10px);
+        }
+        100% {
+            transform: translateY(0px);
+        }
+    }
+    .muñeco-btn {
+        display: flex;
+        position: absolute;
+        animation: flotar 3s ease-in-out infinite;
+
+    }
+
+    .secciones_botones {
+        display: none;
+    }
+
+    .encabezado_div {
+        height: 150px;
+        flex-direction: column;
+
+        padding: 10px;
+        padding-left: 200px;
+
+    }
+
+    .logo_div {
+        display: none;
+    }
+
+    .logo {
+
+    }
+
+    #buscador {
+
+    }
+
+    .buscador_div{
+        width: 80%;
+    }
+    .acciones_div{
+        width: 70%;
+        padding-right: 90px;
+    }
+    .footer-contenido {
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+    }
+
+    .footer-columna {
+        width: 100%;
+        margin-bottom: 30px;
+    }
+
+    .footer-links a:hover {
+        transform: translateX(0);
+    }
+
 }
