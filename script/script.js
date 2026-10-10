@@ -1,17 +1,24 @@
-// Seleccionamos los elementos del HTML mediante sus IDs
-const menuBtn = document.getElementById('menu-btn');
-const sidebar = document.getElementById('sidebar');
-const overlay = document.getElementById('overlay');
+const btnAbrir = document.getElementById('btnAbrirMenu');
+const btnCerrar = document.getElementById('btnCerrarMenu');
+const menuLateral = document.getElementById('menuLateral');
+const menuOverlay = document.getElementById('menuOverlay');
 
-// Función que abre o cierra el menú
-function alternarMenu() {
-    // La función toggle() añade la clase si no está, y la elimina si ya está puesta
-    sidebar.classList.toggle('abierto');
-    overlay.classList.toggle('activo');
+function abrirMenu() {
+    menuLateral.classList.remove('-translate-x-full');
+    menuOverlay.classList.remove('hidden');
+    setTimeout(() => {
+        menuOverlay.classList.remove('opacity-0');
+    }, 10);
 }
 
-// Cuando se hace clic en el botón de las 3 rayas(hamburguesita), se ejecuta la función
-menuBtn.addEventListener('click', alternarMenu);
+function cerrarMenu() {
+    menuLateral.classList.add('-translate-x-full');
+    menuOverlay.classList.add('opacity-0');
+    setTimeout(() => {
+        menuOverlay.classList.add('hidden');
+    }, 300);
+}
 
-// Cuando se hace clic en el fondo oscuro, también cerramos el menú
-overlay.addEventListener('click', alternarMenu);
+btnAbrir.addEventListener('click', abrirMenu);
+btnCerrar.addEventListener('click', cerrarMenu);
+menuOverlay.addEventListener('click', cerrarMenu);
