@@ -466,8 +466,8 @@ iframe {
 .footer-contenido {
     display: flex;
     justify-content: space-around;
-    flex-wrap: wrap; /* Permite que los elementos bajen si no caben */
-    max-width: 1200px;
+    flex-wrap: nowrap;
+
     margin: 0 auto;
     padding: 0 20px;
     gap: 30px;
@@ -539,11 +539,11 @@ iframe {
         padding: 2% 0% 0% 0% ;
     }
     .form_mensaje {
-        width: 60%;
+        width: 85%;
 
     }
     .form_datos {
-        width: 60%;
+        width: 85%;
         display: flex;
         flex-direction: column;
         justify-content: space-evenly;
@@ -556,12 +556,12 @@ iframe {
         border-radius: 20px;
         border-right: 0;
     }
-    .contenido1_form_datos {
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        height: 80px;
-        margin-top: -10px;
+    .contenido1_form_datos h1 {
+        padding: 5px;
+
+    }
+    .contenido1_form_mensaje h1 {
+        padding: 5px;
 
     }
     /* es como crear una funcion pero en css :))))*/
@@ -590,9 +590,8 @@ iframe {
     .encabezado_div {
         height: 150px;
         flex-direction: column;
-
         padding: 10px;
-        padding-left: 200px;
+        padding-left: 150px;
         border-bottom: 5px solid var(--rojo-principal);
 
     }
@@ -614,8 +613,8 @@ iframe {
     }
     .acciones_div{
         width: 70%;
-        padding-right: 90px;
-        padding-right: 90px;
+
+
     }
     .footer-contenido {
         flex-direction: column;
@@ -631,5 +630,9 @@ iframe {
     .footer-links a:hover {
         transform: translateX(0);
     }
+
+}
+/*PARA MOVILES A PARTIR DE 450PX*/
+@media screen and (max-width: 900px) {
 
 }

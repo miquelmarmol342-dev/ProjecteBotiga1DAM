@@ -1,0 +1,270 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Mundo Gamer</title>
+    <link rel="stylesheet" href="../style/contacte_Style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- 1. SCRIPT DE TAILWIND -->
+    <script src="https://cdn.tailwindcss.com"></script>
+
+    <!-- 2. CONFIGURACIon  COLORES  TAILWIND -->
+    <script>
+        tailwind.config = {
+            theme: {extend: {colors: {azulGamer: '#041631', amarilloGamer: '#e8b402', rojoGamer: '#de1115', bordeOscuro: '#0d1117'}}}}
+    </script>
+</head>
+<body>
+
+<header id="header">
+
+    <div class="muñeco-btn">
+        <img src="../Imagenes/señalador-burguer.png" alt="" width="216">
+    </div>
+
+    <div class="encabezado_div">
+
+        <!-- Botón Hamburguesa -->
+        <div class="menu-btn-padre">
+            <button id="btnAbrirMenu"
+                    class="btn-gamer fixed top-[10px] left-[10px] z-[100] bg-amarilloGamer p-3 rounded lg:hidden">
+                <svg viewBox="0 0 32 22" width="30" height="30" xmlns="http://www.w3.org/2000/svg">
+                    <path fill="#041631"
+                          d="M30,22 C31.1,22 32,21.1 32,20 C32,18.9 31.1,18 30,18 L2,18 C0.9,18 0,18.9 0,20 C0,21.1 0.9,22 2,22 L30,22 Z M30,13 C31.1,13 32,12.1 32,11 C32,9.9 31.1,9 30,9 L2,9 C0.9,9 0,9.9 0,11 C0,12.1 0.9,13 2,13 L30,13 Z M30,4 C31.1,4 32,3.1 32,2 C32,0.9 31.1,0 30,0 L2,0 C0.9,0 0,0.9 0,2 C0,3.1 0.9,4 2,4 L30,4 Z"/>
+                </svg>
+            </button>
+        </div>
+
+        <!-- Fondo oscuro (Overlay) -->
+        <div id="menuOverlay"
+             class="fixed inset-0 bg-black/70 z-[150] hidden opacity-0 transition-opacity duration-300"></div>
+
+        <!-- Menú Lateral Offcanvas con Tailwind -->
+        <div id="menuLateral"
+             class="fixed top-0 left-0 h-full w-[280px] bg-[#222] z-[200] -translate-x-full transition-transform duration-300 flex flex-col">
+            <!-- Cabecera con título y botón de cerrar -->
+            <div class="flex justify-between items-center p-4">
+                <h5 class="text-amarilloGamer text-[14px]" style="font-family: 'Press Start 2P', monospace;">MENÚ</h5>
+                <button id="btnCerrarMenu" class="text-white hover:text-amarilloGamer text-3xl font-bold leading-none">
+                    &times;
+                </button>
+            </div>
+
+            <!-- Cuerpo del menú -->
+            <div class="flex flex-col h-full p-4">
+                <ul class="space-y-4 p-0 m-0 list-none">
+                    <li><a href="#" class="block">
+                        <button class="btn-gamer w-full text-center">INICIO</button>
+                    </a></li>
+                    <li><a href="#" class="block">
+                        <button class="btn-gamer w-full text-center">PRODUCTOS</button>
+                    </a></li>
+                    <li><a href="#" class="block">
+                        <button class="btn-gamer w-full text-center">CONSOLAS</button>
+                    </a></li>
+                    <li><a href="#" class="block">
+                        <button class="btn-gamer w-full text-center">CONTACTO</button>
+                    </a></li>
+                    <li><a href="#" class="block">
+                        <button class="btn-gamer w-full text-center">LEGAL</button>
+                    </a></li>
+                </ul>
+
+                <!-- Footer del menú empujado al fondo automáticamente -->
+                <div class="mt-auto pb-4 text-center">
+                    <p class="text-[11px] text-[#aaa5a5] m-0">&copy; 2026 Mundo Gamer. Todos los derechos
+                        reservados.</p>
+                </div>
+            </div>
+        </div>
+
+        <a href="" class="logo_div">
+            <img src="../Imagenes/logo.png" alt="logo" class="logo">
+        </a>
+        <div class="buscador_div">
+            <input type="search" name="buscador" id="buscador" placeholder="Busca juegos,consolas y más...">
+        </div>
+        <div class="acciones_div">
+            <div class="cuenta">
+                <a href="">
+                    <svg width="33px" height="64px" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"
+                         stroke="#000000">
+                        <g id="SVGRepo_bgCarrier" stroke-width="0"></g>
+                        <g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g>
+                        <g id="SVGRepo_iconCarrier">
+                            <path d="M5 21C5 17.134 8.13401 14 12 14C15.866 14 19 17.134 19 21M16 7C16 9.20914 14.2091 11 12 11C9.79086 11 8 9.20914 8 7C8 4.79086 9.79086 3 12 3C14.2091 3 16 4.79086 16 7Z"
+                                  stroke="#ffffff" stroke-width="2" stroke-linecap="round"
+                                  stroke-linejoin="round"></path>
+                        </g>
+                    </svg>
+                </a>
+            </div>
+            <div class="favoritos">
+                <a href="">
+                    <svg width="33px" height="64px" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <g id="SVGRepo_bgCarrier" stroke-width="0"></g>
+                        <g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g>
+                        <g id="SVGRepo_iconCarrier">
+                            <path fill-rule="evenodd" clip-rule="evenodd"
+                                  d="M12 6.00019C10.2006 3.90317 7.19377 3.2551 4.93923 5.17534C2.68468 7.09558 2.36727 10.3061 4.13778 12.5772C5.60984 14.4654 10.0648 18.4479 11.5249 19.7369C11.6882 19.8811 11.7699 19.9532 11.8652 19.9815C11.9483 20.0062 12.0393 20.0062 12.1225 19.9815C12.2178 19.9532 12.2994 19.8811 12.4628 19.7369C13.9229 18.4479 18.3778 14.4654 19.8499 12.5772C21.6204 10.3061 21.3417 7.07538 19.0484 5.17534C16.7551 3.2753 13.7994 3.90317 12 6.00019Z"
+                                  stroke="#ffffff" stroke-width="2" stroke-linecap="round"
+                                  stroke-linejoin="round"></path>
+                        </g>
+                    </svg>
+                </a>
+            </div>
+            <div class="carrito">
+                <a href="">
+                    <svg width="33px" height="64px" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <g id="SVGRepo_bgCarrier" stroke-width="0"></g>
+                        <g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g>
+                        <g id="SVGRepo_iconCarrier">
+                            <path d="M6.29977 5H21L19 12H7.37671M20 16H8L6 3H3M9 20C9 20.5523 8.55228 21 8 21C7.44772 21 7 20.5523 7 20C7 19.4477 7.44772 19 8 19C8.55228 19 9 19.4477 9 20ZM20 20C20 20.5523 19.5523 21 19 21C18.4477 21 18 20.5523 18 20C18 19.4477 18.4477 19 19 19C19.5523 19 20 19.4477 20 20Z"
+                                  stroke="#ffffff" stroke-width="2" stroke-linecap="round"
+                                  stroke-linejoin="round"></path>
+                        </g>
+                    </svg>
+                </a>
+            </div>
+        </div>
+    </div>
+
+    <div class="secciones_botones">
+        <a href="">
+            <button class="btn-gamer">INICIO</button>
+        </a>
+        <a href="">
+            <button class="btn-gamer">PRODUCTOS</button>
+        </a>
+        <a href="">
+            <button class="btn-gamer">CONSOLAS</button>
+        </a>
+        <a href="">
+            <button class="btn-gamer">CONDICIONES</button>
+        </a>
+        <a href="">
+            <button class="btn-gamer">CONTACTO</button>
+        </a>
+    </div>
+</header>
+
+<!--CATALOGO-->
+<!-- ========================================== -->
+<!-- CARRUSEL DE PRODUCTOS GAMER (Puro Tailwind)-->
+<!-- ========================================== -->
+<section class="py-16 bg-bordeOscuro min-h-screen">
+
+    <div class="text-center mb-10">
+        <h2 class="text-2xl md:text-4xl text-amarilloGamer inline-block pb-2 border-b-2 border-rojoGamer" style="font-family: 'Press Start 2P', monospace;">
+            NOVEDADES
+        </h2>
+        <p class="text-gray-300 mt-4">Desliza para ver los últimos lanzamientos</p>
+    </div>
+
+    <!-- CONTENEDOR DEL CARRUSEL -->
+    <!-- overflow-x-auto: permite hacer scroll horizontal -->
+    <!-- snap-x snap-mandatory: hace el efecto imán para que la tarjeta se centre sola -->
+    <!-- scrollbar-hide (opcional): esconde la barra fea de abajo -->
+    <div class="flex gap-6 overflow-x-auto snap-x snap-mandatory px-4 pb-8 max-w-[1200px] mx-auto custom-scrollbar">
+
+        <!-- ================= TARJETA 1 (Debe llevar snap-center y shrink-0) ================= -->
+        <div class="snap-center shrink-0 tarjeta-catalogo bg-azulGamer border-2 border-amarilloGamer rounded-xl p-4 w-72 flex flex-col">
+            <img src="../Imagenes/juego1.jpg" alt="Cyberpunk" class="w-full h-48 object-cover rounded-md mb-4 border border-[#0d1117]">
+            <h3 class="text-xl font-bold mb-2 text-amarilloGamer">Cyberpunk 2077</h3>
+            <p class="text-xs mb-4 text-gray-300 flex-grow">Night City te espera en este RPG.</p>
+            <div class="text-3xl font-bold text-white mb-4">49.99€</div>
+            <div class="flex gap-2 mt-auto">
+                <input type="number" value="1" min="1" class="w-16 bg-bordeOscuro text-white border border-amarilloGamer rounded-md text-center outline-none">
+                <button class="btn-comprar bg-rojoGamer text-white font-bold py-2 rounded-md w-full">Comprar</button>
+            </div>
+        </div>
+
+        <!-- ================= TARJETA 2 ================= -->
+        <div class="snap-center shrink-0 tarjeta-catalogo bg-azulGamer border-2 border-amarilloGamer rounded-xl p-4 w-72 flex flex-col">
+            <img src="../Imagenes/juego2.jpg" alt="Elden Ring" class="w-full h-48 object-cover rounded-md mb-4 border border-[#0d1117]">
+            <h3 class="text-xl font-bold mb-2 text-amarilloGamer">Elden Ring</h3>
+            <p class="text-xs mb-4 text-gray-300 flex-grow">Descubre las Tierras Intermedias.</p>
+            <div class="text-3xl font-bold text-white mb-4">59.99€</div>
+            <div class="flex gap-2 mt-auto">
+                <input type="number" value="1" min="1" class="w-16 bg-bordeOscuro text-white border border-amarilloGamer rounded-md text-center outline-none">
+                <button class="btn-comprar bg-rojoGamer text-white font-bold py-2 rounded-md w-full">Comprar</button>
+            </div>
+        </div>
+
+        <!-- ================= TARJETA 3 ================= -->
+        <div class="snap-center shrink-0 tarjeta-catalogo bg-azulGamer border-2 border-amarilloGamer rounded-xl p-4 w-72 flex flex-col">
+            <img src="../Imagenes/juego3.jpg" alt="Automobilista 2" class="w-full h-48 object-cover rounded-md mb-4 border border-[#0d1117]">
+            <h3 class="text-xl font-bold mb-2 text-amarilloGamer">Automobilista 2</h3>
+            <p class="text-xs mb-4 text-gray-300 flex-grow">Simulación de carreras realista.</p>
+            <div class="text-3xl font-bold text-white mb-4">29.99€</div>
+            <div class="flex gap-2 mt-auto">
+                <input type="number" value="1" min="1" class="w-16 bg-bordeOscuro text-white border border-amarilloGamer rounded-md text-center outline-none">
+                <button class="btn-comprar bg-rojoGamer text-white font-bold py-2 rounded-md w-full">Comprar</button>
+            </div>
+        </div>
+
+        <!-- ================= TARJETA 4 (Para que el carrusel tenga sentido, necesitas varias) ================= -->
+        <div class="snap-center shrink-0 tarjeta-catalogo bg-azulGamer border-2 border-amarilloGamer rounded-xl p-4 w-72 flex flex-col">
+            <img src="../Imagenes/juego4.jpg" alt="Otro juego" class="w-full h-48 object-cover rounded-md mb-4 border border-[#0d1117]">
+            <h3 class="text-xl font-bold mb-2 text-amarilloGamer">Forza Horizon 5</h3>
+            <p class="text-xs mb-4 text-gray-300 flex-grow">Conduce por un México de mundo abierto.</p>
+            <div class="text-3xl font-bold text-white mb-4">39.99€</div>
+            <div class="flex gap-2 mt-auto">
+                <input type="number" value="1" min="1" class="w-16 bg-bordeOscuro text-white border border-amarilloGamer rounded-md text-center outline-none">
+                <button class="btn-comprar bg-rojoGamer text-white font-bold py-2 rounded-md w-full">Comprar</button>
+            </div>
+        </div>
+
+    </div>
+</section>
+
+
+
+
+
+
+<!-- FOOTER DE MUNDO GAMER -->
+<footer class="footer-gamer">
+    <div class="footer-contenido">
+        <a href="" class="">
+            <img src="../Imagenes/logo.png" width="324">
+        </a>
+        <div class="footer-columna">
+            <h3 class="footer-titulo">MUNDO GAMER</h3>
+            <p>Tu tienda definitiva para juegos, consolas y accesorios retro y de nueva generación. Sube de nivel tu
+                setup con nosotros.</p>
+        </div>
+
+        <div class="footer-columna">
+            <h3 class="footer-titulo">SECCIONES</h3>
+            <ul class="footer-links">
+                <li><a href="#">Inicio</a></li>
+                <li><a href="#">Nuevos Productos</a></li>
+                <li><a href="#">Ofertas Especiales</a></li>
+                <li><a href="#">Contacto</a></li>
+            </ul>
+        </div>
+
+        <div class="footer-columna">
+            <h3 class="footer-titulo">SOPORTE</h3>
+            <ul class="footer-links">
+                <li><a href="#">Preguntas Frecuentes</a></li>
+                <li><a href="#">Política de Envíos</a></li>
+                <li><a href="#">Devoluciones</a></li>
+                <li><a href="#">Aviso Legal</a></li>
+            </ul>
+        </div>
+    </div>
+
+    <!-- Barra inferior de Copyright -->
+    <div class="footer-bottom">
+        <p>&copy; 2026 Mundo Gamer. Todos los derechos reservados.</p>
+    </div>
+</footer>
+
+<!-- SCRIPT JAVASCRIPT -->
+<script src="../script/script.js"></script>
+
+</body>
+</html>
