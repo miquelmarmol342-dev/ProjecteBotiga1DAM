@@ -4,6 +4,10 @@
     <meta charset="UTF-8">
     <title>Mundo Gamer</title>
     <link rel="stylesheet" type="text/css" href="../style/CSS%20Registre%20Client.css">
+    <link href="https://unpkg.com/nes.css@2.3.0/css/nes.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Press+Start+2P" rel="stylesheet">
+    <link href="https://unpkg.com/nes.css@2.3.0/css/nes-core.min.css" rel="stylesheet">
+
 </head>
 <body>
 <div id="Contenedor">
@@ -37,67 +41,83 @@
                     </a>
                 </div>
             </div>
+        <nav>
+            <ul class="menu">
+                <li><a href="#" class="boton botonInicio">INICIO</a></li>
+                <li><a href="#" class="boton botonProductos">PRODUCTOS</a></li>
+                <li><a href="#" class="boton botonConsolas">CONSOLAS</a></li>
+                <li><a href="#" class="boton botonContacto">CONTACTO</a></li>
+                <li><a href="#" class="boton botonCondiciones">CONDICIONES</a></li>
+            </ul>
+        </nav>
     </header>
-    <nav>
-        <ul class="menu">
-            <li><a href="#" class="boton botonInicio">INICIO</a></li>
-            <li><a href="#" class="boton botonProductos">PRODUCTOS</a></li>
-            <li><a href="#" class="boton botonConsolas">CONSOLAS</a></li>
-            <li><a href="#" class="boton botonAccesorios">ACCESORIOS</a></li>
-            <li><a href="#" class="boton botonOfertas">OFERTAS</a></li>
-            <li><a href="#" class="boton botonContacto">CONTACTO</a></li>
-            <li><a href="#" class="boton botonCondiciones">CONDICIONES</a></li>
-        </ul>
-    </nav>
+
     <article>
         <main class="contenedorPrincipal">
             <div class="ColumnaIlustracion">
                 <div class="DialogoGlobo">
-
+                    <p>¡Registrate para guardar tus logros, favoritos y conseguir ofertas exclusivas!</p>
                 </div>
                 <img src="../Imagenes/Fondoregistro.png" alt="Pirata y cofre" class="ImagenPirata">
             </div>
         <section class="formularioRegistro">
-            <div class="TitulosContenedor">
-                <h1 class=TituloArriba">¡ÚNETE A LA PARTIDA!</h1>
-                <h1 class="TituloAbajo">REGISTRO Y ACCESO</h1>
-            </div>
-            <div class="SubtitulosContenedor">
-            <h1 class="Subtitulo1">¡NUEVA PARTIDA!</h1>
-            <h2 class="Subtitulo2">(Registrarse)</h2>
-            </div>
-            <div class="contenedorFormulario">
-                <form action="#" method="post">
-                    <div class="filaForm">
-                        <label for="Nombre">Nombre de jugador / Nick</label>
-                        <input type="text" id="Nombre" name="Nombre" value="">
-                    </div>
-                    <div class="filaForm">
-                        <label for="Apellidos">Apellidos / Linaje</label>
-                        <input type="text" id="Apellidos" name="Apellidos" value="">
-                    </div>
-                    <div class="filaForm">
-                        <label for="Direccion">Dirección / Tu guarida</label>
-                        <input type="text" id="Direccion" name="Direccion" value="">
-                    </div>
-                    <div class="filaForm">
-                        <label for="Telefono">Número de contacto para alertas de incursión</label>
-                        <input type="text" id="Telefono" name="Telefono" value="">
-                    </div>
-                    <div class="filaForm">
-                        <label for="Correo">Correo Electrónico / Buzón de misiones</label>
-                        <input type="text" id="Correo" name="Correo" value="">
-                    </div>
-                    <div class="filaForm">
-                        <label for="Contraseña">Contraseña / Conjuro de acceso</label>
-                        <input type="text" id="Contraseña" name="Contraseña" value="">
-                    </div>
-                </form>
+                    <!--Contenedor formulario-->
+                    <div class="nes-container is-rounded">
+                        <h3 style="color: black">¡NUEVA PARTIDA!</h3>
+                        <p>(Registrarse)</p>
 
+                        <div class="nes-field">
+                            <label for="nick">Nombre de Jugador / Nick</label>
+                            <input type="text" id="nick" class="nes-input" >
+                        </div>
 
-            </div>
+                        <div class="nes-field">
+                            <label for="apellidos">Apellidos</label>
+                            <input type="text" id="apellidos" class="nes-input">
+                        </div>
 
+                        <div class="nes-field">
+                            <label for="direccion">Dirección</label>
+                            <input type="text" id="direccion" class="nes-input" >
+                        </div>
 
+                        <div class="nes-field">
+                            <label for="telefono">Teléfono</label>
+                            <input type="text" id="telefono" class="nes-input" >
+                        </div>
+
+                        <div class="nes-field" style="margin-top: 15px;">
+                            <label for="correo_reg">Correo Electrónico</label>
+                            <input type="email" id="correo_reg" class="nes-input">
+                        </div>
+
+                        <div class="nes-field">
+                            <label for="contraseña">Contraseña</label>
+                            <input type="password" id="contraseña" class="nes-input" >
+                        </div>
+
+                        <!-- Radio buttons para elegir género-->
+                        <div class="Genero">
+                            <p>Elige tu héroe/heroína:</p>
+                            <label>
+                                <input type="radio" class="nes-radio" id="Link" name="clase" checked />
+                                <span>Link (Hombre)</span>
+                            </label>
+                            <label>
+                                <input type="radio" class="nes-radio" name="clase" />
+                                <span>Zelda (Mujer)</span>
+                            </label>
+                            <label>
+                                <input type="radio" class="nes-radio" name="clase" />
+                                <span>Toad (Sin especificar)</span>
+                            </label>
+                        </div>
+
+                        <!--Botón de confirmación de registro-->
+                        <button type="button" class="nes-btn is-warning" style="width: 100%; margin-top: 20px;">
+                            ¡CREAR PERFIL!
+                        </button>
+                    </div>
         </section>
 
         </main>
