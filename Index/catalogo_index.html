@@ -8,7 +8,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <!-- 1. SCRIPT DE TAILWIND -->
     <script src="https://cdn.tailwindcss.com"></script>
+    <!--una libreria de iconos de boxicons-->
 
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
     <!-- 2. CONFIGURACIon  COLORES  TAILWIND -->
     <script>
         tailwind.config = {
@@ -17,7 +19,7 @@
 </head>
 <body>
 
-<header id="header">
+<header id="header" class="sticky top-0 z-50">
 
     <div class="muñeco-btn">
         <img src="../Imagenes/señalador-burguer.png" alt="" width="216">
@@ -28,7 +30,7 @@
         <!-- Botón Hamburguesa -->
         <div class="menu-btn-padre">
             <button id="btnAbrirMenu"
-                    class="btn-gamer fixed top-[10px] left-[10px] z-[100] bg-amarilloGamer p-3 rounded lg:hidden">
+                    class="btn-gamer fixed top-[10px] left-[10px] z-0 bg-amarilloGamer p-3 rounded lg:hidden">
                 <svg viewBox="0 0 32 22" width="30" height="30" xmlns="http://www.w3.org/2000/svg">
                     <path fill="#041631"
                           d="M30,22 C31.1,22 32,21.1 32,20 C32,18.9 31.1,18 30,18 L2,18 C0.9,18 0,18.9 0,20 C0,21.1 0.9,22 2,22 L30,22 Z M30,13 C31.1,13 32,12.1 32,11 C32,9.9 31.1,9 30,9 L2,9 C0.9,9 0,9.9 0,11 C0,12.1 0.9,13 2,13 L30,13 Z M30,4 C31.1,4 32,3.1 32,2 C32,0.9 31.1,0 30,0 L2,0 C0.9,0 0,0.9 0,2 C0,3.1 0.9,4 2,4 L30,4 Z"/>
@@ -38,11 +40,11 @@
 
         <!-- Fondo oscuro (Overlay) -->
         <div id="menuOverlay"
-             class="fixed inset-0 bg-black/70 z-[150] hidden opacity-0 transition-opacity duration-300"></div>
+             class="fixed inset-0 bg-black/70 z-0 hidden opacity-0 transition-opacity duration-300"></div>
 
         <!-- Menú Lateral Offcanvas con Tailwind -->
         <div id="menuLateral"
-             class="fixed top-0 left-0 h-full w-[280px] bg-[#222] z-[200] -translate-x-full transition-transform duration-300 flex flex-col">
+             class="fixed top-0 left-0 h-full w-[280px] bg-[#222] z-0 -translate-x-full transition-transform duration-300 flex flex-col">
             <!-- Cabecera con título y botón de cerrar -->
             <div class="flex justify-between items-center p-4">
                 <h5 class="text-amarilloGamer text-[14px]" style="font-family: 'Press Start 2P', monospace;">MENÚ</h5>
@@ -150,72 +152,24 @@
 </header>
 
 <!--CATALOGO-->
-<!-- ========================================== -->
-<!-- CARRUSEL DE PRODUCTOS GAMER (Puro Tailwind)-->
-<!-- ========================================== -->
-<section class="py-16 bg-bordeOscuro min-h-screen">
+<section class="py-16 bg-white min-h-screen">
+    <div class="max-w-6xl container mx-auto px-4 py-12">
+        <h1 class="text-center font-bold text-4xl mb-2">Lanzamientos de la semana</h1>
+        <p class="text-gray-400 text-center mb-12">No lo dudes </p>
 
-    <div class="text-center mb-10">
-        <h2 class="text-2xl md:text-4xl text-amarilloGamer inline-block pb-2 border-b-2 border-rojoGamer" style="font-family: 'Press Start 2P', monospace;">
-            NOVEDADES
-        </h2>
-        <p class="text-gray-300 mt-4">Desliza para ver los últimos lanzamientos</p>
-    </div>
+        <div class="relative">
+            <button id="prev-btn" class="absolute left-4 top-1/2 -translate-y-1/2 bg-white text-gray-800 rounded-full p-2 shadow-lg z-0">
+                <i class="bx bx-chevron-left text-3xl w-9"></i>
+            </button>
+            <button id="next-btn" class="absolute right-4 top-1/2 -translate-y-1/2 bg-white text-gray-800 rounded-full p-2 shadow-lg z-0">
+                <i class="bx bx-chevron-right text-3xl w-9"></i>
+            </button>
+            <div class="overflow-hidden">
+                <div id="carousel" class="carousel-container flex gap-6 overflow-x-auto py-8 px-2">
 
-    <!-- CONTENEDOR DEL CARRUSEL -->
-    <!-- overflow-x-auto: permite hacer scroll horizontal -->
-    <!-- snap-x snap-mandatory: hace el efecto imán para que la tarjeta se centre sola -->
-    <!-- scrollbar-hide (opcional): esconde la barra fea de abajo -->
-    <div class="flex gap-6 overflow-x-auto snap-x snap-mandatory px-4 pb-8 max-w-[1200px] mx-auto custom-scrollbar">
-
-        <!-- ================= TARJETA 1 (Debe llevar snap-center y shrink-0) ================= -->
-        <div class="snap-center shrink-0 tarjeta-catalogo bg-azulGamer border-2 border-amarilloGamer rounded-xl p-4 w-72 flex flex-col">
-            <img src="../Imagenes/juego1.jpg" alt="Cyberpunk" class="w-full h-48 object-cover rounded-md mb-4 border border-[#0d1117]">
-            <h3 class="text-xl font-bold mb-2 text-amarilloGamer">Cyberpunk 2077</h3>
-            <p class="text-xs mb-4 text-gray-300 flex-grow">Night City te espera en este RPG.</p>
-            <div class="text-3xl font-bold text-white mb-4">49.99€</div>
-            <div class="flex gap-2 mt-auto">
-                <input type="number" value="1" min="1" class="w-16 bg-bordeOscuro text-white border border-amarilloGamer rounded-md text-center outline-none">
-                <button class="btn-comprar bg-rojoGamer text-white font-bold py-2 rounded-md w-full">Comprar</button>
+                </div>
             </div>
         </div>
-
-        <!-- ================= TARJETA 2 ================= -->
-        <div class="snap-center shrink-0 tarjeta-catalogo bg-azulGamer border-2 border-amarilloGamer rounded-xl p-4 w-72 flex flex-col">
-            <img src="../Imagenes/juego2.jpg" alt="Elden Ring" class="w-full h-48 object-cover rounded-md mb-4 border border-[#0d1117]">
-            <h3 class="text-xl font-bold mb-2 text-amarilloGamer">Elden Ring</h3>
-            <p class="text-xs mb-4 text-gray-300 flex-grow">Descubre las Tierras Intermedias.</p>
-            <div class="text-3xl font-bold text-white mb-4">59.99€</div>
-            <div class="flex gap-2 mt-auto">
-                <input type="number" value="1" min="1" class="w-16 bg-bordeOscuro text-white border border-amarilloGamer rounded-md text-center outline-none">
-                <button class="btn-comprar bg-rojoGamer text-white font-bold py-2 rounded-md w-full">Comprar</button>
-            </div>
-        </div>
-
-        <!-- ================= TARJETA 3 ================= -->
-        <div class="snap-center shrink-0 tarjeta-catalogo bg-azulGamer border-2 border-amarilloGamer rounded-xl p-4 w-72 flex flex-col">
-            <img src="../Imagenes/juego3.jpg" alt="Automobilista 2" class="w-full h-48 object-cover rounded-md mb-4 border border-[#0d1117]">
-            <h3 class="text-xl font-bold mb-2 text-amarilloGamer">Automobilista 2</h3>
-            <p class="text-xs mb-4 text-gray-300 flex-grow">Simulación de carreras realista.</p>
-            <div class="text-3xl font-bold text-white mb-4">29.99€</div>
-            <div class="flex gap-2 mt-auto">
-                <input type="number" value="1" min="1" class="w-16 bg-bordeOscuro text-white border border-amarilloGamer rounded-md text-center outline-none">
-                <button class="btn-comprar bg-rojoGamer text-white font-bold py-2 rounded-md w-full">Comprar</button>
-            </div>
-        </div>
-
-        <!-- ================= TARJETA 4 (Para que el carrusel tenga sentido, necesitas varias) ================= -->
-        <div class="snap-center shrink-0 tarjeta-catalogo bg-azulGamer border-2 border-amarilloGamer rounded-xl p-4 w-72 flex flex-col">
-            <img src="../Imagenes/juego4.jpg" alt="Otro juego" class="w-full h-48 object-cover rounded-md mb-4 border border-[#0d1117]">
-            <h3 class="text-xl font-bold mb-2 text-amarilloGamer">Forza Horizon 5</h3>
-            <p class="text-xs mb-4 text-gray-300 flex-grow">Conduce por un México de mundo abierto.</p>
-            <div class="text-3xl font-bold text-white mb-4">39.99€</div>
-            <div class="flex gap-2 mt-auto">
-                <input type="number" value="1" min="1" class="w-16 bg-bordeOscuro text-white border border-amarilloGamer rounded-md text-center outline-none">
-                <button class="btn-comprar bg-rojoGamer text-white font-bold py-2 rounded-md w-full">Comprar</button>
-            </div>
-        </div>
-
     </div>
 </section>
 
