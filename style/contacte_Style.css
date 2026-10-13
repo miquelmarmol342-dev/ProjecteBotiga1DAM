@@ -22,11 +22,11 @@
 
 body {
     background-size: 100%;
-    background-color: #58595c;
-    /* formas para el fondo */
-    background-repeat: repeat;
+    background-color: #f8f5f5;
+    /* formas para el fondo pero hay que añadirlo solo para mi seccion */
+   /* background-repeat: repeat;
     background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='120' height='120' viewBox='0 0 120 120'%3E%3Cg fill='black' opacity='0.4'%3E%3C!-- Estrella --%3E%3Cpath d='M30,20 l4,12 h12 l-10,7 l4,12 l-10,-7 l-10,7 l4,-12 l-10,-7 h12 z'/%3E%3C!-- Corazón --%3E%3Cpath d='M85,35 a6,6 0 0,0 -12,0 a6,6 0 0,0 -12,0 q0,12 12,18 q12,-6 12,-18 z'/%3E%3C!-- Mando --%3E%3Crect x='40' y='80' width='30' height='18' rx='8'/%3E%3Ccircle cx='48' cy='89' r='2.5' fill='%23E8B402FF'/%3E%3Ccircle cx='62' cy='89' r='2.5' fill='%23E8B402FF'/%3E%3C/g%3E%3C/svg%3E");
-    background-size: 150px 150px;
+    background-size: 150px 150px;*/
 }
 
 header {
@@ -522,7 +522,183 @@ iframe {
     font-size: 13px;
     color: #aaa5a5;
 }
+/* =========================================
+   DISEÑO DE LA TARJETA DE JUEGO (CSS PURO)
+   ========================================= */
 
+/* 1. La caja principal (Equivalente al Group) */
+.tarjeta-juego {
+    position: relative;
+    background-color:var(--azul-principal);
+    border-radius: 1rem;
+    overflow: hidden;
+    box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+    border: 1px solid #e8b402;
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    color: white;
+    transition: all 0.3s ease; /* Animación suave */
+}
+
+/* Efecto al pasar el ratón por la tarjeta entera */
+.tarjeta-juego:hover {
+    box-shadow: 0 0 20px rgba(37, 99, 235, 0.3);
+    border-color: rgba(59, 130, 246, 0.5);
+    transform: translateY(-8px); /* Salta hacia arriba */
+}
+
+/* 2. Zona de la Imagen */
+.tarjeta-imagen-caja {
+    position: relative;
+    height: 13rem; /* 208px */
+    overflow: hidden;
+    background-color: #1e293b;
+}
+
+.tarjeta-imagen {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.7s ease;
+}
+
+/* El zoom de la imagen cuando el ratón está sobre la tarjeta */
+.tarjeta-juego:hover .tarjeta-imagen {
+    transform: scale(1.1);
+}
+
+
+
+/* 3. Etiqueta (Badge) de la Nota flotante */
+.tarjeta-nota {
+    position: absolute;
+    top: 0.75rem;
+    right: 0.75rem;
+    background-color: rgba(0, 0, 0, 0.6);
+    backdrop-filter: blur(8px); /* Efecto cristal */
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    padding: 0.25rem 0.625rem;
+    border-radius: 0.5rem;
+    display: flex;
+    align-items: center;
+    gap: 0.375rem;
+    font-size: 0.875rem;
+    font-weight: bold;
+}
+
+/* 4. Contenido inferior (Textos y botones) */
+.tarjeta-contenido {
+    padding: 1.25rem;
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1; /* Para que empuje los botones abajo */
+}
+
+/* Título */
+.tarjeta-titulo {
+    font-size: 1.25rem;
+    font-weight: bold;
+    margin-bottom: 0.5rem;
+    white-space: nowrap; /* Para que no salte de línea */
+    overflow: hidden;
+    text-overflow: ellipsis; /* Pone los 3 puntitos (...) si es muy largo */
+    transition: color 0.3s ease;
+}
+
+/* Cambia a azul al hacer hover en la tarjeta */
+.tarjeta-juego:hover .tarjeta-titulo {
+    color: #60a5fa;
+}
+
+/* Fila de estrellas y fecha */
+.tarjeta-info {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 1.25rem;
+}
+
+.tarjeta-estrellas {
+    display: flex;
+    align-items: center;
+    font-size: 0.875rem;
+}
+
+.tarjeta-fecha {
+    font-size: 0.75rem;
+    font-weight: 600;
+    letter-spacing: 0.05em;
+    color: #cbd5e1;
+    background-color: #1e293b;
+    padding: 0.25rem 0.5rem;
+    border-radius: 0.375rem;
+    border: 1px solid #334155;
+}
+
+.tarjeta-precio {
+    margin-bottom: 0.75rem;
+    font-size: 1.5rem;
+    font-weight: 900;
+}
+
+/* 5. Zona de Botones */
+.tarjeta-botones {
+    margin-top: auto; /* Se pega abajo del todo */
+    padding-top: 1rem;
+    border-top: 1px solid #1e293b;
+    display: flex;
+    gap: 0.75rem;
+}
+
+/* Estilos compartidos de los botones */
+.tarjeta-botones button {
+    border: none;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.3s ease;
+}
+
+.tarjeta-botones button:active {
+    transform: scale(0.95); /* El "hundimiento" al hacer clic */
+}
+
+/* Botón Comprar */
+.btn-comprar{
+padding: 6px;
+gap:7px;
+
+
+}
+
+
+
+/* Botón Favorito */
+.btn-favorito {
+    background-color: #1e293b;
+    color: #cbd5e1;
+    padding: 0.625rem;
+    border-radius: 0.75rem;
+
+    width: 100%;
+}
+
+.btn-favorito:hover {
+    background-color: #334155;
+    color: #ef4444; /* Pasa a rojo al poner el ratón */
+    border-color: rgba(239, 68, 68, 0.5);
+}
+
+.btn-favorito:hover .icono-fav {
+    transform: scale(1.1); /* El corazón palpita */
+}
+
+.icono-fav {
+    font-size: 1.25rem;
+    transition: transform 0.3s ease;
+}
 /*empezamos con el responsiveeeeeeeeeeeeeeeeeeeeeeeeeee*/
 
 .muñeco-btn {

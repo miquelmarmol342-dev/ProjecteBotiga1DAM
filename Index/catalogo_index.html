@@ -73,7 +73,7 @@
                     </a></li>
                 </ul>
 
-                <!-- Footer del menú empujado al fondo automáticamente -->
+
                 <div class="mt-auto pb-4 text-center">
                     <p class="text-[11px] text-[#aaa5a5] m-0">&copy; 2026 Mundo Gamer. Todos los derechos
                         reservados.</p>
@@ -84,8 +84,13 @@
         <a href="" class="logo_div">
             <img src="../Imagenes/logo.png" alt="logo" class="logo">
         </a>
-        <div class="buscador_div">
-            <input type="search" name="buscador" id="buscador" placeholder="Busca juegos,consolas y más...">
+        <div class="buscador_div relative">
+            <input type="search" name="buscador" id="buscador" placeholder="Busca juegos, consolas y más...">
+
+            <!-- NUEVO: Esta es la caja invisible donde aparecerá la lista -->
+            <div id="lista-sugerencias" class="absolute left-0 top-full w-full bg-black border-slate-700 rounded-lg shadow-xl mt-2 hidden max-h-96 overflow-y-auto z-50">
+                <!-- El JavaScript meterá los minijuegos aquí -->
+            </div>
         </div>
         <div class="acciones_div">
             <div class="cuenta">
@@ -151,29 +156,36 @@
     </div>
 </header>
 
-<!--carusel de juegos -->
-<!--<section class="py-16 bg-white min-h-screen">-->
-<!--    <div class="max-w-6xl container mx-auto px-4 py-12">-->
-<!--        <h1 class="text-center font-bold text-4xl mb-2">Lanzamientos de la semana</h1>-->
-<!--        <p class="text-gray-400 text-center mb-12">No lo dudes </p>-->
 
-<!--        <div class="relative">-->
-<!--            <button id="prev-btn" class="absolute left-4 top-1/2 -translate-y-1/2 bg-white text-gray-800 rounded-full p-2 shadow-lg z-10">-->
-<!--                <i class="bx bx-chevron-left text-3xl w-9"></i>-->
-<!--            </button>-->
-<!--            <button id="next-btn" class="absolute right-4 top-1/2 -translate-y-1/2 bg-white text-gray-800 rounded-full p-2 shadow-lg z-10">-->
-<!--                <i class="bx bx-chevron-right text-3xl w-9"></i>-->
-<!--            </button>-->
-<!--            <div class="overflow-hidden">-->
-<!--                <div id="carousel" class="carousel-container flex gap-6 overflow-x-auto py-8 px-2">-->
+<div class="pt-16 pb-8 bg-black">
+    <div class="max-w-9xl container mx-auto px-4">
+        <h1 class="text-2xl font-bold mb-8 text-white border-b-2 border-amarilloGamer inline-block pb-2">Bienvenido a los 90´s</h1>
+        <div class="relative">
+            <button id="prev-btn" class="absolute left-4 top-1/2 -translate-y-1/2 bg-white text-gray-800 rounded-full p-2 shadow-lg z-10">
+                <i class="bx bx-chevron-left text-3xl"></i>
+            </button>
+            <button id="next-btn" class="absolute right-4 top-1/2 -translate-y-1/2 bg-white text-gray-800 rounded-full p-2 shadow-lg z-10">
+                <i class="bx bx-chevron-right text-3xl"></i>
+            </button>
+            <div class="overflow-hidden">
+                <!-- El JS inyectará las tarjetas del carrusel en este ID -->
+                <div id="carousel" class="carousel-container flex gap-6 overflow-x-auto py-8 px-2 scroll-smooth">
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
 
-<!--                </div>-->
-<!--            </div>-->
-<!--        </div>-->
-<!--    </div>-->
-<!--</section>-->
+<!-- 2. ZONA DE LA CUADRÍCULA (Catálogo general) -->
+<div class="container mx-auto p-6 min-h-screen">
+    <h1 class="text-2xl font-bold mb-8 text-gray-800 border-b-2 border-amarilloGamer inline-block pb-2">Históricamente más vendido</h1>
 
-
+    <!-- Este es el contenedor real para la cuadrícula.
+         Le he puesto clases Grid de Tailwind para que las tarjetas se pongan en 4 columnas en PC y 1 en móvil -->
+    <div id="contenedor-juegos" class="grid grid-cols-1 sm:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-8">
+        <!-- El JS inyectará las tarjetas de tu diseño CSS puro aquí dentro -->
+    </div>
+</div>
 
 
 
@@ -218,7 +230,7 @@
 </footer>
 
 <!-- SCRIPT JAVASCRIPT -->
-<script src="../script/script.js"></script>
+<script type="module" src="../script/main.js"></script>
 
 </body>
 </html>
