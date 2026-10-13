@@ -35,7 +35,7 @@ menuOverlay.addEventListener('click', cerrarMenu);
 import { RAWG_API_KEY } from '/env.js';
 
 // URL para el catálogo general (25 juegos)
-const urlCatalogo = `https://api.rawg.io/api/games?key=${RAWG_API_KEY}&page_size=21`;
+const urlCatalogo = `https://api.rawg.io/api/games?key=${RAWG_API_KEY}&page_size=30`;
 let juegosDeLaAPI = [];
 
 // URL para el carrusel (20 juegos, filtrados entre 1980 y 1999)
@@ -192,7 +192,7 @@ document.addEventListener("click", (evento) => {
     }
 });
 // Arrancamos la aplicación
-// obtenerJuegos();
+obtenerJuegos();
 
 
 
