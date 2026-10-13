@@ -25,11 +25,17 @@ btnAbrir.addEventListener('click', abrirMenu);
 btnCerrar.addEventListener('click', cerrarMenu);
 menuOverlay.addEventListener('click', cerrarMenu);
 
+
+
+
+
+
+
 // 2. CONFIGURACIÓN DE LA API Y VARIABLES (DOS URLS)
 import { RAWG_API_KEY } from '/env.js';
 
 // URL para el catálogo general (25 juegos)
-const urlCatalogo = `https://api.rawg.io/api/games?key=${RAWG_API_KEY}&page_size=24`;
+const urlCatalogo = `https://api.rawg.io/api/games?key=${RAWG_API_KEY}&page_size=21`;
 let juegosDeLaAPI = [];
 
 // URL para el carrusel (20 juegos, filtrados entre 1980 y 1999)
@@ -186,4 +192,4 @@ document.addEventListener("click", (evento) => {
     }
 });
 // Arrancamos la aplicación
-obtenerJuegos();
+// obtenerJuegos();

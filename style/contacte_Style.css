@@ -457,9 +457,8 @@ iframe {
     /* Usamos tu azul y una línea roja superior para separar */
     background-color: var(--azul-principal);
     color: var(--texto-claro);
-    border-top: 5px solid var(--rojo-principal);
+    border-top: 2px solid var(--rojo-principal);
     padding-top: 50px;
-    margin-top: 60px; /* Separa el footer del formulario de arriba */
     font-family: Arial, sans-serif;
 }
 
@@ -755,6 +754,9 @@ gap:7px;
     .muñeco-btn {
         display: flex;
         position: absolute;
+        width: 250px;
+        top: 28px;
+        left: -4px;
         animation: flotar 3s ease-in-out infinite;
 
     }
@@ -768,7 +770,7 @@ gap:7px;
         flex-direction: column;
         padding: 10px;
         padding-left: 150px;
-        border-bottom: 5px solid var(--rojo-principal);
+        border-bottom: 2px solid var(--rojo-principal);
 
     }
 
