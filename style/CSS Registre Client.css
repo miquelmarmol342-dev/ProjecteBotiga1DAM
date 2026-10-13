@@ -4,7 +4,7 @@ body {
     font-family: "Paytone One", sans-serif;
 }
 #Contenedor header {
-        background-color: #112750;
+        background-color: #041631;
         padding: 0;
         position: sticky;
         top: 0;
@@ -220,7 +220,7 @@ form.Buscador_div {
     margin: 0;
     box-sizing: border-box;
     display: flex;
-    background-color: #112750;
+    background-color: #041631;
 }
 .LogoFooter{
     display: flex;
@@ -262,6 +262,7 @@ form.Buscador_div {
     padding-top: 4%;
     width: 25%;
     gap: 1em;
+    margin-bottom: 10px;
 }
 .ContenedorFooter h3{
     color: yellow;
@@ -278,6 +279,7 @@ form.Buscador_div {
 }
 .ContenedorFooter ul{
     list-style: none;
+    padding: 0;
 }
 .ContenedorFooter p{
     font-size: 0.7em;
@@ -287,9 +289,20 @@ form.Buscador_div {
         display: flex;
         flex-direction: column;
         align-items: center;
-
+        text-align: center;
+    }
+    .contenedorPrincipal{
+        gap: 0;
     }
 }
 .Columna1, .Columna2, .Columna3, .Columna4{
     width: 100%;
+}
+.footer-bottom {
+    background-color: var(--borde-oscuro);
+    text-align: center;
+    padding: 20px 10px;
+    margin-top: 0;
+    font-size: 13px;
+    color: #aaa5a5;
 }
