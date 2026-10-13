@@ -268,7 +268,7 @@ form.Buscador_div {
 .ContenedorFooter h3{
     color: yellow;
 }
-.ContenedorFooter li a, p{
+.ContenedorFooter li a, .ContenedorFooter li a p{
     color: white;
 }
 .ContenedorFooter ul li{
