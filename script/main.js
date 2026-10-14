@@ -25,11 +25,17 @@ btnAbrir.addEventListener('click', abrirMenu);
 btnCerrar.addEventListener('click', cerrarMenu);
 menuOverlay.addEventListener('click', cerrarMenu);
 
+
+
+
+
+
+
 // 2. CONFIGURACIÓN DE LA API Y VARIABLES (DOS URLS)
 import { RAWG_API_KEY } from '/env.js';
 
 // URL para el catálogo general (25 juegos)
-const urlCatalogo = `https://api.rawg.io/api/games?key=${RAWG_API_KEY}&page_size=24`;
+const urlCatalogo = `https://api.rawg.io/api/games?key=${RAWG_API_KEY}&page_size=30`;
 let juegosDeLaAPI = [];
 
 // URL para el carrusel (20 juegos, filtrados entre 1980 y 1999)
@@ -187,3 +193,45 @@ document.addEventListener("click", (evento) => {
 });
 // Arrancamos la aplicación
 obtenerJuegos();
+
+
+
+//Carrusel Pagina principal
+// Selección de elementos del DOM
+const pista = document.getElementById('carruselPista');
+const btnAnterior = document.getElementById('btnAnterior');
+const btnSiguiente = document.getElementById('btnSiguiente');
+const slides = document.querySelectorAll('.banner-slide');
+
+let indiceActual = 0;
+const totalSlides = slides.length;
+
+// Función que mueve la pista de posición
+function moverCarrusel() {
+    // Movemos la pista en el eje X según el índice (-0%, -100%, -200%...)
+    pista.style.transform = `translateX(-${indiceActual * 100}%)`;
+}
+
+// Clic en botón "Siguiente"
+btnSiguiente.addEventListener('click', () => {
+    indiceActual++;
+    if (indiceActual >= totalSlides) {
+        indiceActual = 0; // Vuelve al inicio si llega al final
+    }
+    moverCarrusel();
+});
+
+// Clic en botón "Anterior"
+btnAnterior.addEventListener('click', () => {
+    indiceActual--;
+    if (indiceActual < 0) {
+        indiceActual = totalSlides - 1; // Va al último si está en el primero
+    }
+    moverCarrusel();
+});
+
+// (Opcional) Cambio automático cada 5 segundos
+setInterval(() => {
+    indiceActual = (indiceActual + 1) % totalSlides;
+    moverCarrusel();
+}, 5000);

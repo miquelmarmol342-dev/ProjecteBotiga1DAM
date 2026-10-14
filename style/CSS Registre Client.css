@@ -103,6 +103,7 @@ form.Buscador_div {
     align-items: center;
     flex: 1 1 450px; /* Ancho base de 450px; si no cabe, se apila abajo */
     max-width: 500px;
+    line-height: 1.9;
 }
 .contenedorFormulario{
     display: flex;
@@ -155,8 +156,8 @@ form.Buscador_div {
 }
 .DialogoGlobo {
     position: absolute;
-    top: 35px;
-    left: 25px;
+    top: 48px;
+    left: 52px;
     width: 80%;
     height: 180px;
     display: flex;
@@ -186,7 +187,7 @@ form.Buscador_div {
     line-height: 1.3;
     color: #000000;
 }
-.formularioRegistro p, .nes-field{
+.formularioRegistro p, .nes-field {
     color: black;
 }
 
@@ -267,7 +268,7 @@ form.Buscador_div {
 .ContenedorFooter h3{
     color: yellow;
 }
-.ContenedorFooter li a, p{
+.ContenedorFooter li a, .ContenedorFooter li a p{
     color: white;
 }
 .ContenedorFooter ul li{
@@ -305,4 +306,7 @@ form.Buscador_div {
     margin-top: 0;
     font-size: 13px;
     color: #aaa5a5;
+}
+.nes-container p{
+    margin-bottom: 15px;
 }

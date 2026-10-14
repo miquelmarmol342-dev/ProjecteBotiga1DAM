@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Mundo Gamer</title>
+    <title>Catalogo</title>
     <link rel="stylesheet" href="../style/contacte_Style.css">
     <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -12,17 +12,14 @@
 
     <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
     <!-- 2. CONFIGURACIon  COLORES  TAILWIND -->
-    <script>
-        tailwind.config = {
-            theme: {extend: {colors: {azulGamer: '#041631', amarilloGamer: '#e8b402', rojoGamer: '#de1115', bordeOscuro: '#0d1117'}}}}
-    </script>
-</head>
-<body>
 
-<header id="header" class="sticky top-0 z-50">
+</head>
+<body class="body-catalogo">
+
+<header id="header" class="sticky top-0 z-20">
 
     <div class="muñeco-btn">
-        <img src="../Imagenes/señalador-burguer.png" alt="" width="216">
+        <img src="../Imagenes/señalador-burguer.png" alt="muñeco menu">
     </div>
 
     <div class="encabezado_div">
@@ -85,7 +82,7 @@
             <img src="../Imagenes/logo.png" alt="logo" class="logo">
         </a>
         <div class="buscador_div relative">
-            <input type="search" name="buscador" id="buscador" placeholder="Busca juegos, consolas y más...">
+            <input type="search" name="buscador" id="buscador"  placeholder="Busca juegos, consolas y más...">
 
             <!-- NUEVO: Esta es la caja invisible donde aparecerá la lista -->
             <div id="lista-sugerencias" class="absolute left-0 top-full w-full bg-black border-slate-700 rounded-lg shadow-xl mt-2 hidden max-h-96 overflow-y-auto z-50">
@@ -157,14 +154,14 @@
 </header>
 
 
-<div class="pt-16 pb-8 bg-black">
-    <div class="max-w-9xl container mx-auto px-4">
+<div class="pt-16 pb-8 ">
+    <div class="max-w-9xl container mx-auto px-4 bg-purple-500 bg-opacity-45">
         <h1 class="text-2xl font-bold mb-8 text-white border-b-2 border-amarilloGamer inline-block pb-2">Bienvenido a los 90´s</h1>
         <div class="relative">
-            <button id="prev-btn" class="absolute left-4 top-1/2 -translate-y-1/2 bg-white text-gray-800 rounded-full p-2 shadow-lg z-10">
-                <i class="bx bx-chevron-left text-3xl"></i>
+            <button id="prev-btn" class="btn-gamer absolute left-4 top-1/2  bg-white text-gray-800 rounded-full p-2 shadow-lg z-10">
+                <i class=" bx bx-chevron-left text-3xl"></i>
             </button>
-            <button id="next-btn" class="absolute right-4 top-1/2 -translate-y-1/2 bg-white text-gray-800 rounded-full p-2 shadow-lg z-10">
+            <button id="next-btn" class="absolute btn-gamer right-4 top-1/2  bg-white text-gray-800 rounded-full p-2 shadow-lg z-10">
                 <i class="bx bx-chevron-right text-3xl"></i>
             </button>
             <div class="overflow-hidden">
@@ -177,7 +174,7 @@
 </div>
 
 <!-- 2. ZONA DE LA CUADRÍCULA (Catálogo general) -->
-<div class="container mx-auto p-6 min-h-screen">
+<div  id="padre-catalogo" class="container mx-auto p-6 min-h-screen">
     <h1 class="text-2xl font-bold mb-8 text-gray-800 border-b-2 border-amarilloGamer inline-block pb-2">Históricamente más vendido</h1>
 
     <!-- Este es el contenedor real para la cuadrícula.
@@ -230,7 +227,7 @@
 </footer>
 
 <!-- SCRIPT JAVASCRIPT -->
-<script type="module" src="../script/main.js"></script>
 
+<script type="module" src="../script/main.js"></script>
 </body>
 </html>
