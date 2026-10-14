@@ -1,6 +1,48 @@
-/* =========================================
+/*
    VARIABLES GLOBALES (PALETA DE COLORES)
-   ========================================= */
+    */
+html {
+    scroll-behavior: smooth;
+}
+
+/* 1. Contenedor del scroll (La barra entera) */
+::-webkit-scrollbar {
+    width: 16px; /* Ancho en múltiplos de 8 para el look retro pixelado */
+
+}
+
+/* 2. El carril / pista por donde se mueve (Track) */
+::-webkit-scrollbar-track {
+    background-color: var(--azul-principal);
+    border-left: 4px solid #000; /* Borde oscuro para dar relieve interno */
+    image-rendering: pixelated;
+}
+
+/* 3. La barra que se arrastra (Thumb) - Estilo pixel retro */
+::-webkit-scrollbar-thumb {
+
+    background: #ffcc00;
+
+
+    border: 2px solid #000000;
+
+
+    box-shadow: inset 2px 2px 0px #fff7a3,  inset -2px -2px 0px #b88600; /* Sombra inferior/derecha oscura */
+
+    background-size: 8px 8px; /* Tamaño del patrón */
+
+    /* Evita que se vea borroso */
+    image-rendering: pixelated;
+    background-image: linear-gradient(45deg, rgba(0,0,0, 0.1) 25%, transparent 25%, transparent 50%, rgba(0,0,0, 0.1) 50%, rgba(0,0,0, 0.1) 75%, transparent 75%, transparent);
+    background-size: 8px 8px; /* Tamaño del patrón */
+}
+::-webkit-scrollbar-thumb:hover {
+cursor: grab;
+}
+::-webkit-scrollbar-thumb:active {
+cursor: grabbing;
+}
+
 :root {
     /* El azul principal para todo el proyecto (antes tenías varios mezclados) */
     --azul-principal: #041631;
@@ -18,15 +60,16 @@
 * {
     margin: 0;
     box-sizing: border-box;
+
 }
 
 body {
     background-size: 100%;
     background-color: #f8f5f5;
     /* formas para el fondo pero hay que añadirlo solo para mi seccion */
-   /* background-repeat: repeat;
-    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='120' height='120' viewBox='0 0 120 120'%3E%3Cg fill='black' opacity='0.4'%3E%3C!-- Estrella --%3E%3Cpath d='M30,20 l4,12 h12 l-10,7 l4,12 l-10,-7 l-10,7 l4,-12 l-10,-7 h12 z'/%3E%3C!-- Corazón --%3E%3Cpath d='M85,35 a6,6 0 0,0 -12,0 a6,6 0 0,0 -12,0 q0,12 12,18 q12,-6 12,-18 z'/%3E%3C!-- Mando --%3E%3Crect x='40' y='80' width='30' height='18' rx='8'/%3E%3Ccircle cx='48' cy='89' r='2.5' fill='%23E8B402FF'/%3E%3Ccircle cx='62' cy='89' r='2.5' fill='%23E8B402FF'/%3E%3C/g%3E%3C/svg%3E");
-    background-size: 150px 150px;*/
+    /* background-repeat: repeat;
+     background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='120' height='120' viewBox='0 0 120 120'%3E%3Cg fill='black' opacity='0.4'%3E%3C!-- Estrella --%3E%3Cpath d='M30,20 l4,12 h12 l-10,7 l4,12 l-10,-7 l-10,7 l4,-12 l-10,-7 h12 z'/%3E%3C!-- Corazón --%3E%3Cpath d='M85,35 a6,6 0 0,0 -12,0 a6,6 0 0,0 -12,0 q0,12 12,18 q12,-6 12,-18 z'/%3E%3C!-- Mando --%3E%3Crect x='40' y='80' width='30' height='18' rx='8'/%3E%3Ccircle cx='48' cy='89' r='2.5' fill='%23E8B402FF'/%3E%3Ccircle cx='62' cy='89' r='2.5' fill='%23E8B402FF'/%3E%3C/g%3E%3C/svg%3E");
+     background-size: 150px 150px;*/
 }
 
 header {
@@ -521,14 +564,15 @@ iframe {
     font-size: 13px;
     color: #aaa5a5;
 }
-/* =========================================
+
+/*
    DISEÑO DE LA TARJETA DE JUEGO (CSS PURO)
-   ========================================= */
+    */
 
 /* 1. La caja principal (Equivalente al Group) */
 .tarjeta-juego {
     position: relative;
-    background-color:var(--azul-principal);
+    background-color: var(--azul-principal);
     border-radius: 1rem;
     overflow: hidden;
     box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
@@ -566,7 +610,6 @@ iframe {
 .tarjeta-juego:hover .tarjeta-imagen {
     transform: scale(1.1);
 }
-
 
 
 /* 3. Etiqueta (Badge) de la Nota flotante */
@@ -661,17 +704,16 @@ iframe {
 }
 
 .tarjeta-botones button:active {
-    transform: scale(0.95); /* El "hundimiento" al hacer clic */
+    transform: scale(0.95);
 }
 
 /* Botón Comprar */
-.btn-comprar{
-padding: 6px;
-gap:7px;
+.btn-comprar {
+    padding: 6px;
+    gap: 7px;
 
 
 }
-
 
 
 /* Botón Favorito */
@@ -698,25 +740,40 @@ gap:7px;
     font-size: 1.25rem;
     transition: transform 0.3s ease;
 }
+.body-catalogo{
+    background-image: url("../Imagenes/fondo-purple-pixel.jpg");
+    background-size: 420px;
+}
 /*empezamos con el responsiveeeeeeeeeeeeeeeeeeeeeeeeeee*/
-
 .muñeco-btn {
     display: none;
 }
-
+#menuLateral{
+    /*background-color: var(--azul-principal);*/
+    background-image: url("../Imagenes/fondo-estrellitas.jpg");
+    background-size: 600px;
+}
+#menuLateral h5{
+    color: var(--amarillo-principal);
+}
+#btnCerrarMenu{
+    color: var(--amarillo-principal);
+}
 @media screen and (max-width: 900px) {
 
-    #formulario_contacto{
+    #formulario_contacto {
         flex-direction: column;
         justify-content: center;
         align-items: center;
         gap: 20px;
-        padding: 2% 0% 0% 0% ;
+        padding: 2% 0% 0% 0%;
     }
+
     .form_mensaje {
         width: 85%;
 
     }
+
     .form_datos {
         width: 85%;
         display: flex;
@@ -731,14 +788,17 @@ gap:7px;
         border-radius: 20px;
         border-right: 0;
     }
+
     .contenido1_form_datos h1 {
         padding: 5px;
 
     }
+
     .contenido1_form_mensaje h1 {
         padding: 5px;
 
     }
+
     /* es como crear una funcion pero en css :))))*/
     @keyframes flotar {
         0% {
@@ -785,14 +845,16 @@ gap:7px;
 
     }
 
-    .buscador_div{
+    .buscador_div {
         width: 80%;
     }
-    .acciones_div{
+
+    .acciones_div {
         width: 70%;
 
 
     }
+
     .footer-contenido {
         flex-direction: column;
         align-items: center;
@@ -809,6 +871,7 @@ gap:7px;
     }
 
 }
+
 /*PARA MOVILES A PARTIR DE 450PX*/
 @media screen and (max-width: 900px) {
 
