@@ -1,4 +1,4 @@
-// 1. LÓGICA DEL MENÚ LATERAL
+// Control del menú lateral
 const btnAbrir = document.getElementById('btnAbrirMenu');
 const btnCerrar = document.getElementById('btnCerrarMenu');
 const menuLateral = document.getElementById('menuLateral');
@@ -20,26 +20,24 @@ function cerrarMenu() {
     }, 300);
 }
 
-btnAbrir.addEventListener('click', abrirMenu);
-btnCerrar.addEventListener('click', cerrarMenu);
-menuOverlay.addEventListener('click', cerrarMenu);
+if(btnAbrir) btnAbrir.addEventListener('click', abrirMenu);
+if(btnCerrar) btnCerrar.addEventListener('click', cerrarMenu);
+if(menuOverlay) menuOverlay.addEventListener('click', cerrarMenu);
 
-// 2. CONFIGURACIÓN DE LA API Y VARIABLES
+
+// config de la api para las 3url o mas en el futuro
 import { RAWG_API_KEY } from '/env.js';
 
-// Catálogo general
 const urlCatalogo = `https://api.rawg.io/api/games?key=${RAWG_API_KEY}&page_size=21`;
-let juegosDeLaAPI = [];
-
-// Carrusel 1: Retro
 const urlRetro = `https://api.rawg.io/api/games?key=${RAWG_API_KEY}&dates=1980-01-01,2005-12-31&page_size=20`;
-let juegosCarruselRetro = [];
-
-// Carrusel 2: Coches (Género Racing)
 const urlCoches = `https://api.rawg.io/api/games?key=${RAWG_API_KEY}&genres=racing&page_size=20`;
+
+let juegosDeLaAPI = [];
+let juegosCarruselRetro = [];
 let juegosCarruselCoches = [];
 
-// 3. EL COMPONENTE: La "Fábrica" de Tarjetas
+
+// plantilla para juegos
 function crearTarjetaHTML(juego, clasesExtra = "") {
     let valorPorNota = juego.rating * 10;
     let picoVariado = juego.id % 10;
@@ -53,13 +51,11 @@ function crearTarjetaHTML(juego, clasesExtra = "") {
 
     return `
         <div class="tarjeta-juego ${clasesExtra}">
-            <!-- Capa 1: El fondo que se inclina hacia atrás -->
             <div class="tarjeta-wrapper">
                 <img src="${juego.background_image}" alt="Portada de ${juego.name}" class="tarjeta-imagen" />
                 <div class="tarjeta-gradiente-sombra"></div>
             </div>
 
-            <!-- Capa 2: El contenido que salta hacia adelante en 3D -->
             <div class="tarjeta-contenido-3d">
                 <h5 class="tarjeta-titulo text-white font-bold text-lg truncate">${juego.name}</h5>
                 <div class="tarjeta-info flex justify-between text-sm text-slate-300 my-2">
@@ -86,48 +82,55 @@ function crearTarjetaHTML(juego, clasesExtra = "") {
     `;
 }
 
-// 4. OBTENER DATOS
+
+// cargamos api en paralelo para que no tarde tannnnto en cargar las los juegos
 async function obtenerJuegos() {
-    // A) Catálogo General
-    const respuestaCatalogo = await fetch(urlCatalogo);
-    const datosCatalogo = await respuestaCatalogo.json();
-    juegosDeLaAPI = datosCatalogo.results;
+    try {
+        const [respuestaCatalogo, respuestaRetro, respuestaCoches] = await Promise.all([
+            fetch(urlCatalogo),
+            fetch(urlRetro),
+            fetch(urlCoches)
+        ]);
 
-    const contenedor = document.getElementById("contenedor-juegos");
-    if (contenedor) {
-        contenedor.innerHTML = "";
-        juegosDeLaAPI.forEach(juego => {
-            contenedor.innerHTML += crearTarjetaHTML(juego);
-        });
+        const [datosCatalogo, datosRetro, datosCoches] = await Promise.all([
+            respuestaCatalogo.json(),
+            respuestaRetro.json(),
+            respuestaCoches.json()
+        ]);
+
+        // Pintamos el catálogo principal
+        juegosDeLaAPI = datosCatalogo.results;
+        const contenedor = document.getElementById("contenedor-juegos");
+        if (contenedor) {
+            contenedor.innerHTML = juegosDeLaAPI.map(juego => crearTarjetaHTML(juego)).join('');
+        }
+
+        // Pintamos el carrusel retro
+        juegosCarruselRetro = datosRetro.results;
+        const carousel1 = document.getElementById('carousel');
+        if (carousel1) {
+            carousel1.innerHTML = juegosCarruselRetro.map(juego => crearTarjetaHTML(juego, "flex-none w-72")).join('');
+            configurarControlesCarrusel('carousel', 'prev-btn', 'next-btn', juegosCarruselRetro.length);
+        }
+
+        // Pintamos el carrusel de coches
+        juegosCarruselCoches = datosCoches.results;
+        const carousel2 = document.getElementById('carousel2');
+        if (carousel2) {
+            carousel2.innerHTML = juegosCarruselCoches.map(juego => crearTarjetaHTML(juego, "flex-none w-72")).join('');
+            configurarControlesCarrusel('carousel2', 'prev-btn2', 'next-btn2', juegosCarruselCoches.length);
+        }
+
+        // Activamos el efecto 3D en las tarjetas
+        activarSeguimientoRaton();
+
+    } catch (error) {
+        console.error("Falló la carga de juegos:", error);
     }
-
-    // B) Carrusel Retro
-    const respuestaRetro = await fetch(urlRetro);
-    const datosRetro = await respuestaRetro.json();
-    juegosCarruselRetro = datosRetro.results;
-
-    const carousel1 = document.getElementById('carousel');
-    if (carousel1) carousel1.innerHTML = juegosCarruselRetro.map(juego => crearTarjetaHTML(juego, "flex-none w-72")).join('');
-
-    // Configuramos los botones del carrusel retro
-    configurarControlesCarrusel('carousel', 'prev-btn', 'next-btn', juegosCarruselRetro.length);
-
-    // C) Carrusel de Coches
-    const respuestaCoches = await fetch(urlCoches);
-    const datosCoches = await respuestaCoches.json();
-    juegosCarruselCoches = datosCoches.results;
-
-    const carousel2 = document.getElementById('carousel2');
-    if (carousel2) carousel2.innerHTML = juegosCarruselCoches.map(juego => crearTarjetaHTML(juego, "flex-none w-72")).join('');
-    configurarControlesCarrusel('carousel2', 'prev-btn2', 'next-btn2', juegosCarruselCoches.length);
-
-    // AQUÍ ES EL SITIO CORRECTO: Las cartas ya existen en el DOM
-    activarSeguimientoRaton();
-    // Configuramos los botones del carrusel de coches
-    configurarControlesCarrusel('carousel2', 'prev-btn2', 'next-btn2', juegosCarruselCoches.length);
 }
 
-// 5. LÓGICA DE MÚLTIPLES CARRUSELES
+
+// Sistema para mover los carruseles con los botones de flecha
 function configurarControlesCarrusel(idCarrusel, idBtnAnterior, idBtnSiguiente, totalJuegos) {
     const carruselDOM = document.getElementById(idCarrusel);
     const btnAnterior = document.getElementById(idBtnAnterior);
@@ -136,16 +139,12 @@ function configurarControlesCarrusel(idCarrusel, idBtnAnterior, idBtnSiguiente, 
     if (!carruselDOM || totalJuegos === 0) return;
 
     let indexLocal = 0;
-    const cardWidth = 288 + 24; // Ancho de la tarjeta + espacio
+    const cardWidth = 288 + 24;
 
     function mover(direccion) {
         indexLocal += direccion;
-
-        if (indexLocal >= totalJuegos) {
-            indexLocal = 0;
-        } else if (indexLocal < 0) {
-            indexLocal = totalJuegos - 1;
-        }
+        if (indexLocal >= totalJuegos) indexLocal = 0;
+        else if (indexLocal < 0) indexLocal = totalJuegos - 1;
 
         carruselDOM.scrollTo({ left: indexLocal * cardWidth, behavior: 'smooth' });
     }
@@ -154,60 +153,60 @@ function configurarControlesCarrusel(idCarrusel, idBtnAnterior, idBtnSiguiente, 
     if (btnSiguiente) btnSiguiente.addEventListener('click', () => mover(1));
 }
 
-// 6. LÓGICA DEL BUSCADOR
+
+// buscador con "retrado" asi no saturamos la api por cada letra y demas
 const inputBuscador = document.getElementById("buscador");
 const listaSugerencias = document.getElementById("lista-sugerencias");
 let temporizadorBuscador;
 
-inputBuscador.addEventListener("input", (evento) => {
-    clearTimeout(temporizadorBuscador);
-    const textoBusqueda = evento.target.value;
+if (inputBuscador && listaSugerencias) {
+    inputBuscador.addEventListener("input", (evento) => {
+        clearTimeout(temporizadorBuscador);
+        const textoBusqueda = evento.target.value;
 
-    if (textoBusqueda.trim() === "") {
-        listaSugerencias.innerHTML = "";
-        listaSugerencias.classList.add("hidden");
-        return;
-    }
-
-    temporizadorBuscador = setTimeout(async () => {
-        const urlBusqueda = `https://api.rawg.io/api/games?key=${RAWG_API_KEY}&search=${textoBusqueda}&ordering=-added&page_size=9`;
-        const respuesta = await fetch(urlBusqueda);
-        const datos = await respuesta.json();
-
-        listaSugerencias.innerHTML = "";
-
-        if (datos.results.length === 0) {
-            listaSugerencias.innerHTML = `<div class="p-3 text-white text-sm font-bold">No se encontraron juegos</div>`;
-        } else {
-            datos.results.forEach(juego => {
-                let año = juego.released ? juego.released.substring(0, 4) : "N/A";
-
-                listaSugerencias.innerHTML += `
-                    <div class="flex items-center gap-3 p-3 hover:bg-slate-800 cursor-pointer border-b border-slate-700 transition-colors last:border-b-0">
-                        <img src="${juego.background_image}" class="w-12 h-12 object-cover rounded-md" alt="${juego.name}">
-                        <div class="flex flex-col">
-                            <h6 class="text-white font-bold text-sm truncate w-48">${juego.name}</h6>
-                            <span class="text-xs text-slate-400">${año} - ⭐ ${juego.rating}</span>
-                        </div>
-                    </div>
-                `;
-            });
+        if (textoBusqueda.trim() === "") {
+            listaSugerencias.innerHTML = "";
+            listaSugerencias.classList.add("hidden");
+            return;
         }
-        listaSugerencias.classList.remove("hidden");
-    }, 500);
-});
 
-document.addEventListener("click", (evento) => {
-    if (!evento.target.closest('.buscador_div')) {
-        listaSugerencias.classList.add("hidden");
-    }
-});
+        temporizadorBuscador = setTimeout(async () => {
+            const urlBusqueda = `https://api.rawg.io/api/games?key=${RAWG_API_KEY}&search=${textoBusqueda}&ordering=-added&page_size=9`;
+            const respuesta = await fetch(urlBusqueda);
+            const datos = await respuesta.json();
 
-// Arrancamos la aplicación
-obtenerJuegos();
+            listaSugerencias.innerHTML = "";
+
+            if (datos.results.length === 0) {
+                listaSugerencias.innerHTML = `<div class="p-3 text-white text-sm font-bold">No se encontraron juegos</div>`;
+            } else {
+                datos.results.forEach(juego => {
+                    let año = juego.released ? juego.released.substring(0, 4) : "N/A";
+                    listaSugerencias.innerHTML += `
+                        <div class="flex items-center gap-3 p-3 hover:bg-slate-800 cursor-pointer border-b border-slate-700 transition-colors last:border-b-0">
+                            <img src="${juego.background_image}" class="w-12 h-12 object-cover rounded-md" alt="${juego.name}">
+                            <div class="flex flex-col">
+                                <h6 class="text-white font-bold text-sm truncate w-48">${juego.name}</h6>
+                                <span class="text-xs text-slate-400">${año} ⭐ ${juego.rating}</span>
+                            </div>
+                        </div>
+                    `;
+                });
+            }
+            listaSugerencias.classList.remove("hidden");
+        }, 500);
+    });
+
+    // Ocultar sugerencias si haces clic fuera del buscador
+    document.addEventListener("click", (evento) => {
+        if (!evento.target.closest('.buscador_div')) {
+            listaSugerencias.classList.add("hidden");
+        }
+    });
+}
 
 
-// 7. CARRUSEL PÁGINA PRINCIPAL
+// Logica del baner
 const pista = document.getElementById('carruselPista');
 const btnAnteriorSlider = document.getElementById('btnAnterior');
 const btnSiguienteSlider = document.getElementById('btnSiguiente');
@@ -225,9 +224,7 @@ function moverCarruselPrincipal() {
 if (btnSiguienteSlider) {
     btnSiguienteSlider.addEventListener('click', () => {
         indiceActual++;
-        if (indiceActual >= totalSlides) {
-            indiceActual = 0;
-        }
+        if (indiceActual >= totalSlides) indiceActual = 0;
         moverCarruselPrincipal();
     });
 }
@@ -235,9 +232,7 @@ if (btnSiguienteSlider) {
 if (btnAnteriorSlider) {
     btnAnteriorSlider.addEventListener('click', () => {
         indiceActual--;
-        if (indiceActual < 0) {
-            indiceActual = totalSlides - 1;
-        }
+        if (indiceActual < 0) indiceActual = totalSlides - 1;
         moverCarruselPrincipal();
     });
 }
@@ -250,42 +245,28 @@ setInterval(() => {
 }, 5000);
 
 
-
-
-
-
-// =========================================================
-// FONDO ANIMADO INTERACTIVO: ICONOS GAMER Y RETRO OPTIMIZADO
-// =========================================================
+// fondo animado con particulas y demas
 const canvas = document.getElementById('lienzoGamer');
 
 if (canvas) {
     const ctx = canvas.getContext('2d');
-
-    // Ajuste inicial al tamaño de la pantalla
     canvas.width = window.innerWidth;
     canvas.height = window.innerHeight;
 
     let particulasArray = [];
-    let raton = {
-        x: null,
-        y: null,
-        radioSq: 6400 // Usamos el radio al cuadrado (80 * 80) para ahorrar el cálculo pesado de raíz cuadrada
-    };
+    let raton = { x: null, y: null, radioSq: 6400 };
 
-    window.addEventListener('mousemove', function(event) {
+    window.addEventListener('mousemove', (event) => {
         raton.x = event.clientX;
         raton.y = event.clientY;
     });
 
-    window.addEventListener('mouseout', function() {
+    window.addEventListener('mouseout', () => {
         raton.x = null;
         raton.y = null;
     });
 
-    // Paleta de colores retro
     const colores = ['#e8b402', '#de1115', '#00ffcc', '#ff00ff', '#ffffff'];
-    // Lista de formas disponibles
     const formas = ['estrella', 'fantasma', 'corazon', 'marciano', 'pixel'];
 
     class ParticulaPixel {
@@ -305,85 +286,66 @@ if (canvas) {
 
             switch(this.forma) {
                 case 'estrella':
-                    // Estrella retro cruzada
                     ctx.fillRect(this.x + t/3, this.y, t/3, t);
                     ctx.fillRect(this.x, this.y + t/3, t, t/3);
                     break;
-
                 case 'fantasma':
-                    // Fantasmita pixelado tipo Pac-Man
                     ctx.fillRect(this.x + t/4, this.y, t/2, t);
                     ctx.fillRect(this.x, this.y + t/4, t, t/2);
                     ctx.fillRect(this.x, this.y + 3*t/4, t/4, t/4);
                     ctx.fillRect(this.x + 3*t/4, this.y + 3*t/4, t/4, t/4);
                     break;
-
                 case 'corazon':
-                    // Corazón de vida retro
                     ctx.fillRect(this.x + t/4, this.y, t/4, t/4);
                     ctx.fillRect(this.x + 2*t/4, this.y, t/4, t/4);
                     ctx.fillRect(this.x, this.y + t/4, t, t/4);
                     ctx.fillRect(this.x + t/4, this.y + 2*t/4, 2*t/4, t/4);
                     ctx.fillRect(this.x + 2*t/4, this.y + 3*t/4, t/4, t/4);
                     break;
-
                 case 'marciano':
-                    // Marciano tipo Space Invaders
                     ctx.fillRect(this.x + t/4, this.y, 2*t/4, t/4);
                     ctx.fillRect(this.x, this.y + t/4, t, t/4);
                     ctx.fillRect(this.x + t/4, this.y + 2*t/4, 2*t/4, t/4);
                     ctx.fillRect(this.x, this.y + 3*t/4, t/4, t/4);
                     ctx.fillRect(this.x + 3*t/4, this.y + 3*t/4, t/4, t/4);
                     break;
-
                 default:
-                    // Píxel normal
                     ctx.fillRect(this.x, this.y, t, t);
                     break;
             }
         }
 
         actualizar() {
-            // Rebotar en los bordes de la pantalla
             if (this.x > canvas.width || this.x < 0) this.direccionX = -this.direccionX;
             if (this.y > canvas.height || this.y < 0) this.direccionY = -this.direccionY;
 
-            // Interacción con el ratón optimizada (sin usar Math.sqrt)
             if (raton.x !== null && raton.y !== null) {
                 let dx = raton.x - this.x;
                 let dy = raton.y - this.y;
                 let distanciaSq = dx * dx + dy * dy;
 
                 if (distanciaSq < raton.radioSq) {
-                    // Empujar en dirección opuesta
                     this.x -= dx / 15;
                     this.y -= dy / 15;
                 }
             }
 
-            // Aplicar el movimiento
             this.x += this.direccionX;
             this.y += this.direccionY;
-
             this.dibujar();
         }
     }
 
     function iniciarFondo() {
         particulasArray = [];
-        // OPTIMIZACIÓN: Reducimos drásticamente la densidad de partículas (de 6000 a 18000 píxeles por partícula)
-        // para que apenas consuma recursos en dispositivos más lentos
         let numeroParticulas = Math.min((canvas.height * canvas.width) / 18000, 100);
 
         for (let i = 0; i < numeroParticulas; i++) {
-            let tamaño = Math.random() * 8 + 12; // Un poco más grandes (12px a 20px) para que se distingan las formas
+            let tamaño = Math.random() * 8 + 12;
             let x = Math.random() * (canvas.width - tamaño * 2) + tamaño;
             let y = Math.random() * (canvas.height - tamaño * 2) + tamaño;
-
-            // Velocidad suave y controlada
-            let direccionX = (Math.random() * 1) - 0.5;
-            let direccionY = (Math.random() * 1) - 0.5;
-
+            let direccionX = (Math.random() - 0.5) * 0.5;
+            let direccionY = (Math.random() - 0.5) * 0.5;
             let color = colores[Math.floor(Math.random() * colores.length)];
             let forma = formas[Math.floor(Math.random() * formas.length)];
 
@@ -393,10 +355,7 @@ if (canvas) {
 
     function animarFondo() {
         requestAnimationFrame(animarFondo);
-
-        // OPTIMIZACIÓN: Relleno sólido rápido para evitar sobrecarga de transparencia.
-        // Se puede añadir un rastro opcional aumentando ligeramente el rendimiento.
-        ctx.fillStyle = 'rgba(4, 22, 49, 0.3)'; // Fondo con rastro suave para simular 16-bits
+        ctx.fillStyle = 'rgba(4, 22, 49, 0.3)';
         ctx.fillRect(0, 0, canvas.width, canvas.height);
 
         for (let i = 0; i < particulasArray.length; i++) {
@@ -407,9 +366,8 @@ if (canvas) {
     iniciarFondo();
     animarFondo();
 
-    // Redimensionado de pantalla controlado para no sobrecargar de golpe
     let debounceTimer;
-    window.addEventListener('resize', function() {
+    window.addEventListener('resize', () => {
         clearTimeout(debounceTimer);
         debounceTimer = setTimeout(() => {
             canvas.width = window.innerWidth;
@@ -420,93 +378,67 @@ if (canvas) {
 }
 
 
-
-// 7. EFECTO PARALLAX 3D (SEGUIMIENTO DE RATÓN)
+// Efecto Parallax 3D siguiendo el movimiento del ratón sobre las tarjetas
 function activarSeguimientoRaton() {
     const tarjetas = document.querySelectorAll('.tarjeta-juego');
 
     tarjetas.forEach(tarjeta => {
         const wrapper = tarjeta.querySelector('.tarjeta-wrapper');
         const imagen = tarjeta.querySelector('.tarjeta-imagen');
-        let temporizadorSalida;
 
-        // Cuando el ratón se mueve por encima de la carta
+        tarjeta.addEventListener('mouseenter', () => {
+            wrapper.style.transition = "none";
+            imagen.style.transition = "none";
+        });
+
         tarjeta.addEventListener('mousemove', (e) => {
-            clearTimeout(temporizadorSalida);
-
-            // Conseguimos las dimensiones y posición de la carta
             const rect = tarjeta.getBoundingClientRect();
             const width = rect.width;
             const height = rect.height;
 
-            // Calculamos la posición del ratón respecto al centro (-1 a 1)
             const mouseX = (e.clientX - rect.left - width / 2) / (width / 2);
             const mouseY = (e.clientY - rect.top - height / 2) / (height / 2);
 
-            // Multiplicadores de rotación (máximo 15 grados)
             const rotateX = mouseY * -15;
             const rotateY = mouseX * 15;
-
-            // Multiplicadores de movimiento de imagen (efecto parallax)
             const translateX = mouseX * -20;
             const translateY = mouseY * -20;
 
-            // Aplicamos los estilos en tiempo real
             wrapper.style.transform = `perspective(1000px) rotateX(${rotateX}deg) rotateY(${rotateY}deg) translateZ(-20px)`;
             imagen.style.transform = `scale(1.15) translateX(${translateX}px) translateY(${translateY}px)`;
         });
 
-        // Cuando el ratón sale de la carta (restaurar suavemente)
         tarjeta.addEventListener('mouseleave', () => {
-            // Añadimos un pequeño retraso para que no sea brusco al sacar el ratón rápido
-            temporizadorSalida = setTimeout(() => {
-                wrapper.style.transition = "transform 0.5s ease-out, box-shadow 0.5s ease-out";
-                imagen.style.transition = "transform 0.5s ease-out";
+            wrapper.style.transition = "transform 1.5s ease-out, box-shadow 0.5s ease-out";
+            imagen.style.transition = "transform 0.5s ease-out";
 
-                wrapper.style.transform = `perspective(1000px) rotateX(0deg) rotateY(0deg) translateZ(0px)`;
-                imagen.style.transform = `scale(1.15) translateX(0px) translateY(0px)`;
-
-                // Volvemos a poner la transición rápida para la próxima vez que entre el ratón
-                setTimeout(() => {
-                    wrapper.style.transition = "transform 0.1s ease-out, box-shadow 0.5s ease-out";
-                    imagen.style.transition = "transform 0.1s ease-out";
-                }, 500);
-            }, 50);
+            wrapper.style.transform = `perspective(1000px) rotateX(0deg) rotateY(0deg) translateZ(0px)`;
+            imagen.style.transform = `scale(1.15) translateX(0px) translateY(0px)`;
         });
     });
 }
 
-// =========================================================
-// 8. LÓGICA DEL CARRITO DE COMPRAS Y CONTADOR BUBBLE
-// =========================================================
 
-// Declaramos el carrito UNA SOLA VEZ para todo el archivo
+// Lógica del carrito de compras guardado en localStorage
 let carrito = JSON.parse(localStorage.getItem('carritoGamer')) || [];
 
-// --- FUNCIÓN DEL CONTADOR ---
 function actualizarContadorCarrito() {
     const contadorDOM = document.getElementById('contador-carrito');
     if (contadorDOM) {
-        // Sumamos las cantidades (si compro 2 del mismo, cuenta como 2)
         const totalItems = carrito.reduce((suma, item) => suma + item.cantidad, 0);
-
         if (totalItems > 0) {
-            contadorDOM.textContent = totalItems > 99 ? '+99' : totalItems; // Limita el ancho visual
+            contadorDOM.textContent = totalItems > 99 ? '+99' : totalItems;
             contadorDOM.classList.remove('hidden');
         } else {
             contadorDOM.classList.add('hidden');
         }
     }
 }
-
-// Arrancamos el contador nada más cargar cualquier página de la web
 actualizarContadorCarrito();
 
-
-// --- 8.1 AÑADIR AL CARRITO (Desde el Catálogo) ---
+// Añadir productos al hacer clic en Comprar
 document.addEventListener('click', (evento) => {
     const btnComprar = evento.target.closest('.btn-comprar');
-
     if (btnComprar) {
         const idJuego = btnComprar.getAttribute('data-id');
         const nombre = btnComprar.getAttribute('data-nombre');
@@ -518,29 +450,17 @@ document.addEventListener('click', (evento) => {
         if (juegoExistente) {
             juegoExistente.cantidad++;
         } else {
-            carrito.push({
-                id: idJuego,
-                nombre: nombre,
-                precio: precio,
-                imagen: imagen,
-                cantidad: 1
-            });
+            carrito.push({ id: idJuego, nombre: nombre, precio: precio, imagen: imagen, cantidad: 1 });
         }
 
-        // Guardamos en memoria
         localStorage.setItem('carritoGamer', JSON.stringify(carrito));
-
-        // Actualizamos la burbuja AL VUELO (sin recargar la página)
         actualizarContadorCarrito();
-
         alert(`🎮 ¡${nombre} añadido al carrito!`);
     }
 });
 
-
-// --- 8.2 DIBUJAR EL CARRITO (Solo se ejecuta si estamos en carrito_index.html) ---
+// Renderizado de la página del carrito
 const contenedorItems = document.getElementById('contenedor-items-carrito');
-
 if (contenedorItems) {
     const spanSubtotal = document.getElementById('resumen-subtotal');
     const spanIva = document.getElementById('resumen-iva');
@@ -570,22 +490,18 @@ if (contenedorItems) {
                 contenedorItems.innerHTML += `
                     <div class="bg-slate-800 rounded-xl p-4 flex flex-col sm:flex-row items-center gap-4 border border-slate-700 transition hover:border-[#e8b402]">
                         <img src="${juego.imagen}" alt="${juego.nombre}" class="w-full sm:w-32 h-24 object-cover rounded-lg shadow-md">
-                        
                         <div class="flex-grow text-center sm:text-left">
                             <h4 class="font-bold text-lg truncate max-w-xs">${juego.nombre}</h4>
                             <p class="text-slate-400 text-sm">Precio ud: ${precioSeguro.toFixed(2)}€</p>
                         </div>
-
                         <div class="flex items-center gap-3 bg-slate-900 rounded-lg p-1">
                             <button onclick="cambiarCantidad('${juego.id}', -1)" class="w-8 h-8 flex justify-center items-center bg-slate-700 hover:bg-slate-600 rounded text-white transition"><i class='bx bx-minus'></i></button>
                             <span class="font-bold w-4 text-center">${juego.cantidad}</span>
                             <button onclick="cambiarCantidad('${juego.id}', 1)" class="w-8 h-8 flex justify-center items-center bg-slate-700 hover:bg-slate-600 rounded text-white transition"><i class='bx bx-plus'></i></button>
                         </div>
-
                         <div class="text-xl font-bold text-[#e8b402] min-w-[80px] text-right">
                             ${precioTotalJuego.toFixed(2)}€
                         </div>
-
                         <button onclick="eliminarJuego('${juego.id}')" class="text-red-500 hover:text-red-400 p-2 text-2xl transition">
                             <i class='bx bx-trash'></i>
                         </button>
@@ -603,16 +519,12 @@ if (contenedorItems) {
         spanTotal.textContent = total.toFixed(2) + '€';
     }
 
-    // Funciones globales para que el HTML pueda verlas
     window.cambiarCantidad = function(id, cambio) {
         const juego = carrito.find(item => item.id === id);
         if (juego) {
             juego.cantidad += cambio;
-            if (juego.cantidad <= 0) {
-                eliminarJuego(id);
-            } else {
-                guardarYRenderizar();
-            }
+            if (juego.cantidad <= 0) eliminarJuego(id);
+            else guardarYRenderizar();
         }
     };
 
@@ -633,8 +545,11 @@ if (contenedorItems) {
     function guardarYRenderizar() {
         localStorage.setItem('carritoGamer', JSON.stringify(carrito));
         renderizarCarrito();
-        actualizarContadorCarrito(); // Actualizamos la burbuja al cambiar cosas en el carrito
+        actualizarContadorCarrito();
     }
 
     renderizarCarrito();
 }
+
+// llamamos a nuestra funcionnnnnnnnn
+obtenerJuegos();
