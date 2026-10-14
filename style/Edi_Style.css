@@ -54,6 +54,7 @@ cursor: grabbing;
     --rojo-principal: #de1115;
     --borde-oscuro: #0d1117;
     --texto-claro: rgb(255 255 255 / 0.76);
+
 }
 
 /* le quitamos todo para que sea mas facil hacer los calculos */
@@ -748,8 +749,8 @@ iframe {
 
 }
 .body-contacto{
-    background-image: url("../Imagenes/fondo-contacto.jpg");
-    background-size: 420px;
+
+
 }
 /*empezamos con el responsiveeeeeeeeeeeeeeeeeeeeeeeeeee*/
 .muñeco-btn {
@@ -781,6 +782,84 @@ iframe {
 #btnCerrarMenu{
     color: var(--amarillo-principal);
 }
+
+/*CART CARITOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOO*/
+
+/* Activar el entorno 3D en la tarjeta principal */
+.tarjeta-juego {
+    position: relative;
+    perspective: 2500px; /* Distancia de la cámara 3D */
+    transform-style: preserve-3d;
+    height: 350px; /* Ajusta según el diseño de tu tienda */
+    display: flex;
+    align-items: flex-end; /* Empuja el contenido hacia abajo */
+    border-radius: 12px;
+    margin-bottom: 20px;
+}
+
+/* El fondo inclinado */
+/* 1. ACTUALIZA EL WRAPPER (Transición más rápida para que siga al ratón sin lag) */
+.tarjeta-wrapper {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    transition: transform 0.1s ease-out, box-shadow 0.5s ease-out;
+    z-index: 0;
+    border-radius: 12px;
+    overflow: hidden;
+}
+
+/* 2. ACTUALIZA LA IMAGEN (Le damos un scale(1.15) para tener margen al moverla) */
+.tarjeta-imagen {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transform: scale(1.15);
+    transition: transform 0.1s ease-out;
+}
+
+/* Sombra oscura inferior para que el texto siempre sea legible */
+.tarjeta-gradiente-sombra {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(to top, rgba(15, 23, 42, 0.95) 0%, rgba(15, 23, 42, 0.4) 50%, transparent 100%);
+    transition: opacity 0.5s;
+}
+
+/* La caja de texto flotante */
+.tarjeta-contenido-3d {
+    position: relative;
+    top: 135px;
+    z-index: 1;
+    width: 100%;
+    padding: 20px;
+    transition: transform 1s ease-out;
+    transform: translateZ(0); /* Estado base */
+}
+
+/* --- ANIMACIONES HOVER (PC) Y ACTIVE (MÓVIL) --- */
+
+/* 3. QUITA EL TRANSFORM ESTÁTICO DEL HOVER DEL WRAPPER (Ahora lo hará el JS) */
+.tarjeta-juego:hover .tarjeta-wrapper,
+.tarjeta-juego.active .tarjeta-wrapper {
+    /* Ya no hay transform aquí, solo el brillo */
+    box-shadow: 12px 50px 50px 50px #e8b402;
+}
+
+/* El contenido 3D se queda igual, saltando hacia ti */
+.tarjeta-juego:hover .tarjeta-contenido-3d,
+.tarjeta-juego.active .tarjeta-contenido-3d {
+    transform: translateZ(0px) translateY(-15px);
+    box-shadow: 0px 25px 25px -10px #e8b402;
+}
+
+
+
+
+
+
 @media screen and (max-width: 900px) {
 
     #formulario_contacto {

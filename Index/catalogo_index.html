@@ -5,7 +5,7 @@
     <title>Catalogo</title>
     <link rel="stylesheet" href="../style/Edi_Style.css">
     <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="../style/Pagina_Principal.css">
+    <link rel="stylesheet" href="../style/Style.css">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <!-- 1. SCRIPT DE TAILWIND -->
     <script src="https://cdn.tailwindcss.com"></script>
@@ -16,6 +16,7 @@
 
 </head>
 <body class="body-catalogo">
+
 
 <header id="header" class="sticky top-0 z-20">
 
@@ -119,8 +120,8 @@
                     </svg>
                 </a>
             </div>
-            <div class="carrito">
-                <a href="">
+            <div class="carrito relative">
+                <a href="../Index/carrito_index.html">
                     <svg width="33px" height="64px" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
                         <g id="SVGRepo_bgCarrier" stroke-width="0"></g>
                         <g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g>
@@ -130,6 +131,7 @@
                                   stroke-linejoin="round"></path>
                         </g>
                     </svg>
+                    <span id="contador-carrito" class="absolute top-1 -right-2 bg-red-600 text-white text-[11px] font-bold w-5 h-5 rounded-full flex items-center justify-center hidden shadow-md border border-black z-10">0</span>
                 </a>
             </div>
         </div>
