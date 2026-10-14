@@ -407,6 +407,7 @@ header {
     border-radius: 20px;
     border-left: 0;
     box-shadow: 10px 8px 10px var(--azul-principal);
+
 }
 
 .contenido1_form_datos {
@@ -741,13 +742,34 @@ iframe {
     transition: transform 0.3s ease;
 }
 .body-catalogo{
-    background-image: url("../Imagenes/fondo-purple-pixel.jpg");
+    background-image: url("../Imagenes/fondo-estrellitas.jpg");
+    background-size: 420px;
+
+
+}
+.body-contacto{
+    background-image: url("../Imagenes/fondo-contacto.jpg");
     background-size: 420px;
 }
 /*empezamos con el responsiveeeeeeeeeeeeeeeeeeeeeeeeeee*/
 .muñeco-btn {
     display: none;
 }
+.carusel1{
+    background-image: url("../Imagenes/fondo-purple-pixel.jpg");
+    background-size: 620px;
+
+
+}
+.carusel2{
+    background-image: url("../Imagenes/fondo-rojo-furia.jpg");
+    background-size: 620px;
+    color: white;
+}
+.carusel2 h1{
+    border-color: white;
+}
+
 #menuLateral{
     /*background-color: var(--azul-principal);*/
     background-image: url("../Imagenes/fondo-estrellitas.jpg");
@@ -787,6 +809,7 @@ iframe {
         border: 3px solid var(--borde-oscuro);
         border-radius: 20px;
         border-right: 0;
+        margin-bottom: 50px;
     }
 
     .contenido1_form_datos h1 {

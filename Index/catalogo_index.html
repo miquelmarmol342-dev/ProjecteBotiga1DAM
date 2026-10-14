@@ -3,8 +3,9 @@
 <head>
     <meta charset="UTF-8">
     <title>Catalogo</title>
-    <link rel="stylesheet" href="../style/contacte_Style.css">
+    <link rel="stylesheet" href="../style/Edi_Style.css">
     <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../style/Pagina_Principal.css">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <!-- 1. SCRIPT DE TAILWIND -->
     <script src="https://cdn.tailwindcss.com"></script>
@@ -81,7 +82,7 @@
         <a href="" class="logo_div">
             <img src="../Imagenes/logo.png" alt="logo" class="logo">
         </a>
-        <div class="buscador_div relative">
+        <div class="buscador_div">
             <input type="search" name="buscador" id="buscador"  placeholder="Busca juegos, consolas y más...">
 
             <!-- NUEVO: Esta es la caja invisible donde aparecerá la lista -->
@@ -154,8 +155,8 @@
 </header>
 
 
-<div class="pt-16 pb-8 ">
-    <div class="max-w-9xl container mx-auto px-4 bg-purple-500 bg-opacity-45">
+<div class="pt-10 pb-8 ">
+    <div class="max-w-10xl container mx-auto px-4 rounded-3xl bg-black bg-opacity-85 py-10 carusel1">
         <h1 class="text-2xl font-bold mb-8 text-white border-b-2 border-amarilloGamer inline-block pb-2">Bienvenido a los 90´s</h1>
         <div class="relative">
             <button id="prev-btn" class="btn-gamer absolute left-4 top-1/2  bg-white text-gray-800 rounded-full p-2 shadow-lg z-10">
@@ -172,10 +173,28 @@
         </div>
     </div>
 </div>
+<div class="pt-5 pb-8 ">
+    <div class="max-w-10xl container mx-auto px-4 rounded-3xl  py-10 carusel2">
+        <h1 class="text-2xl font-bold mb-8  border-b-2 inline-block pb-2">La carrera de tu vida</h1>
+        <div class="relative">
+            <button id="prev-btn2" class="btn-gamer absolute left-4 top-1/2  bg-white text-gray-800 rounded-full p-2 shadow-lg z-10">
+                <i class=" bx bx-chevron-left text-3xl"></i>
+            </button>
+            <button id="next-btn3" class="absolute btn-gamer right-4 top-1/2  bg-white text-gray-800 rounded-full p-2 shadow-lg z-10">
+                <i class="bx bx-chevron-right text-3xl"></i>
+            </button>
+            <div class="overflow-hidden">
+                <!-- El JS inyectará las tarjetas del carrusel en este ID -->
+                <div id="carousel2" class="carousel-container flex gap-6 overflow-x-auto py-8 px-2 scroll-smooth">
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
 
 <!-- 2. ZONA DE LA CUADRÍCULA (Catálogo general) -->
 <div  id="padre-catalogo" class="container mx-auto p-6 min-h-screen">
-    <h1 class="text-2xl font-bold mb-8 text-gray-800 border-b-2 border-amarilloGamer inline-block pb-2">Históricamente más vendido</h1>
+    <h1 class="text-2xl font-bold mb-8 text-white border-b-2 border-amarilloGamer inline-block pb-2">Históricamente más vendido</h1>
 
     <!-- Este es el contenedor real para la cuadrícula.
          Le he puesto clases Grid de Tailwind para que las tarjetas se pongan en 4 columnas en PC y 1 en móvil -->
@@ -188,16 +207,11 @@
 
 
 <!-- FOOTER DE MUNDO GAMER -->
-<footer class="footer-gamer">
+<footer class="footer-gamer ">
     <div class="footer-contenido">
         <a href="" class="">
             <img src="../Imagenes/logo.png" width="324">
         </a>
-        <div class="footer-columna">
-            <h3 class="footer-titulo">MUNDO GAMER</h3>
-            <p>Tu tienda definitiva para juegos, consolas y accesorios retro y de nueva generación. Sube de nivel tu
-                setup con nosotros.</p>
-        </div>
 
         <div class="footer-columna">
             <h3 class="footer-titulo">SECCIONES</h3>
@@ -225,9 +239,10 @@
         <p>&copy; 2026 Mundo Gamer. Todos los derechos reservados.</p>
     </div>
 </footer>
-
+<script type="module" src="../script/main.js"></script>
+</body>
+</html>
 <!-- SCRIPT JAVASCRIPT -->
-
 <script type="module" src="../script/main.js"></script>
 </body>
 </html>
