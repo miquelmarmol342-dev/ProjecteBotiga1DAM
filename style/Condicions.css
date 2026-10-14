@@ -1,4 +1,5 @@
 
+
 .pagina-condiciones .cabecera-cond {
     display: flex;
     justify-content: space-between;
@@ -9,7 +10,6 @@
 .pagina-condiciones .titulo-cond {
     flex: 1;
     text-align: center;
-
 }
 
 .pagina-condiciones h1 {
@@ -32,7 +32,9 @@
     z-index: 1;
 }
 
-
+/* ================================================================
+   CONDICIONES: BOTONES | PERGAMINO
+   ================================================================ */
 .pagina-condiciones .contenedor-cond {
     display: grid;
     grid-template-columns: 38% 1fr;
@@ -41,7 +43,6 @@
     align-items: start;
 }
 
-
 .pagina-condiciones .menu-cond {
     display: flex;
     flex-direction: column;
@@ -49,7 +50,6 @@
 }
 
 .pagina-condiciones .boton-cond {
-
     padding: 14px 20px;
     background: #e3ebf0;
     border: 3px solid #1b2a4a;
@@ -58,17 +58,15 @@
     font-size: 20px;
     font-weight: bold;
     text-decoration: none;
-
 }
 
 .pagina-condiciones .boton-cond:hover {
     background: #ffd23f;
 }
 
-
 .pagina-condiciones .pergamino {
     background: url("../imagenes/Pergamino.jpg") no-repeat center / 100% 100%;
-    height: 560px;
+    height: 690px;
     padding: 90px 80px 50px;
     overflow-y: auto;
 }
@@ -83,4 +81,202 @@
     margin: 0 0 15px;
     font-size: 16px;
     color: #3b2200;
+}
+
+/* ================================================================
+   FOOTER
+   ================================================================ */
+.footer-gamer {
+    background-color: var(--azul-principal);
+    color: var(--texto-claro);
+    border-top: 5px solid var(--rojo-principal);
+    padding-top: 50px;
+    margin-top: 60px;
+    font-family: Arial, sans-serif;
+}
+
+.footer-contenido {
+    display: flex;
+    justify-content: space-around;
+    flex-wrap: nowrap;
+    margin: 0 auto;
+    padding: 0 20px;
+    gap: 30px;
+}
+
+.footer-columna {
+    width: 25%;
+    min-width: 250px;
+}
+
+.footer-titulo {
+    font-family: 'Press Start 2P', monospace;
+    font-size: 13px;
+    color: var(--amarillo-principal);
+    margin-bottom: 25px;
+    line-height: 1.5;
+}
+
+.footer-columna p {
+    font-size: 15px;
+    line-height: 1.6;
+}
+
+.footer-links {
+    list-style: none;
+    padding: 0;
+}
+
+.footer-links li {
+    margin-bottom: 15px;
+}
+
+.footer-links a {
+    color: var(--texto-claro);
+    text-decoration: none;
+    font-size: 15px;
+    transition: color 0.2s, transform 0.2s;
+    display: inline-block;
+}
+
+.footer-links a:hover {
+    color: var(--amarillo-principal);
+    transform: translateX(8px);
+}
+
+.footer-bottom {
+    background-color: var(--borde-oscuro);
+    text-align: center;
+    padding: 20px 10px;
+    margin-top: 40px;
+    font-size: 13px;
+    color: #4A45A8;
+}
+
+
+@media (max-width: 900px) {
+
+    .pagina-condiciones .cabecera-cond {
+        padding: 20px 20px 0;
+    }
+
+    .pagina-condiciones h1 {
+        font-size: 40px;
+    }
+
+    .pagina-condiciones h2 {
+        font-size: 22px;
+    }
+
+    .pagina-condiciones .mago {
+        width: 220px;
+    }
+
+    .pagina-condiciones .contenedor-cond {
+        grid-template-columns: 40% 1fr;
+        padding: 0 20px 30px;
+        gap: 25px;
+    }
+
+    .pagina-condiciones .boton-cond {
+        font-size: 16px;
+        padding: 12px 14px;
+    }
+
+    .pagina-condiciones .pergamino {
+        padding: 80px 55px 40px;
+    }
+
+
+    .footer-contenido {
+        flex-wrap: wrap;
+    }
+
+    .footer-columna {
+        width: 45%;
+        min-width: 0;
+    }
+}
+
+
+@media (max-width: 600px) {
+
+
+    .pagina-condiciones .cabecera-cond {
+        flex-direction: column;
+        align-items: center;
+        padding: 15px 15px 0;
+    }
+
+    .pagina-condiciones h1 {
+        font-size: 28px;
+    }
+
+    .pagina-condiciones h2 {
+        font-size: 17px;
+        margin-bottom: 10px;
+    }
+
+    .pagina-condiciones .mago {
+        width: 200px;
+        margin-bottom: -8px;
+    }
+
+
+    .pagina-condiciones .contenedor-cond {
+        grid-template-columns: 1fr;
+        padding: 0 15px 30px;
+        gap: 20px;
+    }
+
+    .pagina-condiciones .menu-cond {
+        gap: 10px;
+    }
+
+    .pagina-condiciones .boton-cond {
+        font-size: 15px;
+        padding: 11px 14px;
+    }
+
+    .pagina-condiciones .pergamino {
+        height: 480px;
+        padding: 65px 38px 35px;
+    }
+
+    .pagina-condiciones .pergamino h3 {
+        font-size: 15px;
+    }
+
+    .pagina-condiciones .pergamino p {
+        font-size: 14px;
+    }
+
+
+    .footer-gamer {
+        padding-top: 35px;
+        margin-top: 40px;
+    }
+
+    .footer-contenido {
+        flex-direction: column;
+        gap: 25px;
+    }
+
+    .footer-columna {
+        width: 100%;
+    }
+
+    .footer-titulo {
+        font-size: 11px;
+        margin-bottom: 15px;
+    }
+
+    .footer-links li {
+        margin-bottom: 10px;
+    }
+
+    .footer-bottom {
+        margin-top: 25px;
+        font-size: 11px;
+    }
 }
