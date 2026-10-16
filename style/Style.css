@@ -289,4 +289,10 @@
 .contenedor-promocion h2, .contenedor-promocion p{
     color: white;
 }
-
+@media (max-width: 768px) {
+    .contenedor-promocion{
+        display: flex;
+        text-align: center;
+        align-items: center;
+    }
+}

@@ -5,7 +5,6 @@
     <title>Mundo Gamer</title>
     <link rel="stylesheet" type="text/css" href="../style/Edi_Style.css">
     <link rel="stylesheet" type="text/css" href="../style/Registre_Client.css">
-    <link rel="stylesheet" type="text/css" href="../style/Condicions.css">
     <link rel="stylesheet" type="text/css" href="../style/Style.css">
     <link href="https://unpkg.com/nes.css@2.3.0/css/nes.min.css" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css?family=Press+Start+2P" rel="stylesheet">
@@ -154,9 +153,9 @@
     </div>
 </header>
 <article>
+    <!--Carrusel-->
     <main class="contenedorInicio">
         <section class="CarruselContainer">
-            <!-- LA PISTA DEBE ABRAZAR A LOS 3 BANNERS -->
             <div class="carrusel-pista" id="carruselPista">
 
                 <!-- BANNER 1 -->
@@ -186,9 +185,9 @@
                     </div>
                 </div>
 
-            </div> <!-- AQUÍ ES DONDE SE CIERRA LA PISTA -->
+            </div>
 
-            <!-- BOTONES DE NAVEGACIÓN -->
+            <!--BOTONES DE NAVEGACIÓN-->
             <button class="nes-btn btn-carrusel anterior" id="btnAnterior">❮</button>
             <button class="nes-btn btn-carrusel siguiente" id="btnSiguiente">❯</button>
         </section>
@@ -213,26 +212,23 @@
                 </a>
             </div>
         </section>
+        <!--SECCIÓN NOVEDADES-->
         <section class="novedades-seccion">
             <h2>🔥 ÚLTIMAS NOVEDADES</h2>
             <div class="grid-productos">
                 <!--Producto 1-->
                 <article class="tarjeta-producto">
                     <span class="badge-nuevo">NUEVO</span>
-
-                    <!-- Solo la imagen va dentro del contenedor de imagen -->
                     <div class="img-contenedor">
                         <img src="../Imagenes/ZeldaCaratula.jpg" alt="The legend of zelda">
                     </div>
 
-                    <!-- Toda la información de texto y precio va junta aquí -->
                     <div class="info-producto">
                         <h3>The Legend Of Zelda Breath Of the Wild</h3>
                         <p class="plataforma">Nintendo</p>
                         <p class="precio">$49.00</p>
                     </div>
 
-                    <!-- El botón va fuera, al final de la tarjeta -->
                     <button class="btn-pixel">AÑADIR 🛒</button>
                 </article>
 
@@ -322,7 +318,7 @@
                     <div class="fila-form">
                     <form action="#" method="post">
                         <label for="Email"></label>
-                        <input type="email" id="Email" name="Email" class="input-oferta" value="">
+                        <input type="email" id="Email" name="Email" class="input-oferta" value="" placeholder="tucorreo@gmail.com">
                         <a href="#" class="nes-btn is-warning">¡RECIBIR CUPÓN!</a>
                     </form>
                     </div>
@@ -332,6 +328,7 @@
     </main>
 
 </article>
+<!--FOOTER-->
 <footer class="footer-gamer ">
     <div class="footer-contenido">
         <a href="" class="">
