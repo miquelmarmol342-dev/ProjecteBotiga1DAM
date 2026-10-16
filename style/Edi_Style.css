@@ -134,13 +134,14 @@ header {
     transition: all 0.1s ease;
     box-shadow: 0px 4px 0px #000000;
     color: var(--azul-principal);
-    cursor: pointer;
+
 }
 
 .btn-gamer:hover {
     background-color: var(--amarillo-principal);
     transform: translateY(-2px);
     box-shadow: 0px 6px 0px #000000;
+
 }
 
 .btn-gamer:active {
