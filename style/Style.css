@@ -131,6 +131,7 @@
 .novedades-seccion h2{
     margin-top: 20px;
     margin-bottom: 20px;
+    color: white;
 }
 .grid-productos {
     display: grid;
@@ -295,4 +296,10 @@
         text-align: center;
         align-items: center;
     }
+}
+.contenedorInicio{
+    background-image: url("../Imagenes/Fondonebulosa.jpg");
+}
+.contenedorInicio h2{
+    color: white;
 }
