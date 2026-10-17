@@ -653,11 +653,48 @@ iframe {
         transform: translateX(0);
     }
 }
+.ContenedorMario {
+    width: 100%;
+    overflow: hidden;
+}
+
+
+div.MarioLuigi {
+    width: 100%;
+    position: relative;
+}
+
+
+img.MarioLuigi {
+    position: relative;
+    left: 0%;
+    width: 90px;
+    height: auto;
+    display: block;
+    animation: correrDeLadoALado 10s linear infinite;
+    z-index: 10;
+}
+
+/*AHORA CUMPLIMOS CON LOS DOS PARAMETROS TANTO EL TRANSFORM COMO EL LEFT */
 @keyframes correrDeLadoALado {
     0% {
-        transform: translateX(-100px); /* Empieza fuera de la pantalla por la izquierda */
+        left: 0%;
+        transform: scaleX(1);
+    }
+    49% {
+        left: calc(100% - 90px);
+        transform: scaleX(1);
+    }
+    50% {
+        left: calc(100% - 90px);
+        transform: scaleX(-1); /*giroooo*/
+    }
+    99% {
+        left: 0%;
+        transform: scaleX(-1);
     }
     100% {
-        transform: translateX(100vw); /* Termina cruzando completamente hacia la derecha (ancho total del viewport) */
+        left: 0%;
+        transform: scaleX(1);
     }
 }
