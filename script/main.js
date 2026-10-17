@@ -28,9 +28,9 @@ if(menuOverlay) menuOverlay.addEventListener('click', cerrarMenu);
 // config de la api para las 3url o mas en el futuro
 import { RAWG_API_KEY } from '/env.js';
 
-const urlCatalogo = `https://api.rawg.io/api/games?key=${RAWG_API_KEY}&page_size=21`;
-const urlRetro = `https://api.rawg.io/api/games?key=${RAWG_API_KEY}&dates=1980-01-01,2005-12-31&page_size=20`;
-const urlCoches = `https://api.rawg.io/api/games?key=${RAWG_API_KEY}&genres=racing&page_size=20`;
+const urlCatalogo = `https://api.rawg.io/api/games?key=${RAWG_API_KEY}&page_size=15`;
+const urlRetro = `https://api.rawg.io/api/games?key=${RAWG_API_KEY}&dates=1980-01-01,2005-12-31&page_size=6`;
+const urlCoches = `https://api.rawg.io/api/games?key=${RAWG_API_KEY}&genres=racing&page_size=6`;
 
 let juegosDeLaAPI = [];
 let juegosCarruselRetro = [];
@@ -489,7 +489,7 @@ if (contenedorItems) {
 
                 contenedorItems.innerHTML += `
                     <div class="bg-slate-800 rounded-xl p-4 flex flex-col sm:flex-row items-center gap-4 border border-slate-700 transition hover:border-[#e8b402]">
-                        <img src="${juego.imagen}" alt="${juego.nombre}" class="w-full sm:w-32 h-24 object-cover rounded-lg shadow-md">
+                        <img src="${juego.imagen}" alt="${juego.nombre}" class="w-full lg:w-60 sm:w-32 h-36 object-cover rounded-lg shadow-md">
                         <div class="flex-grow text-center sm:text-left">
                             <h4 class="font-bold text-lg truncate max-w-xs">${juego.nombre}</h4>
                             <p class="text-slate-400 text-sm">Precio ud: ${precioSeguro.toFixed(2)}€</p>

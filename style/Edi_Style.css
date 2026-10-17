@@ -230,6 +230,7 @@ header {
     padding: 3% 5%;
     gap: 2%;
     margin: 0;
+    justify-content: space-evenly;
 }
 
 .form_mensaje {
@@ -529,7 +530,11 @@ iframe {
     background-image: url("../Imagenes/fondo-estrellitas.jpg");
     background-size: 420px;
 }
-
+.body-contacto {
+    background-color: #041631; /* Mismo color azul oscuro */
+    min-height: 100vh;
+    margin: 0;
+}
 .muñeco-btn {
     display: none;
 }
@@ -625,7 +630,7 @@ iframe {
     }
 
     .buscador_div {
-        width: 110%;
+        width: 90%;
         position: relative;
     }
 
