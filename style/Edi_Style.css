@@ -44,6 +44,8 @@ html {
 body {
     background-size: 100%;
     background-color: #f8f5f5;
+    /*Si interfiere con algo de la pagina, eliminar el overflow (es para que el mario y luigi no hagan aparecer una barra de navegacion horizontal)*/
+    overflow-x: hidden;
 }
 
 header {
@@ -551,6 +553,14 @@ iframe {
     background-image: url("../Imagenes/fondo-estrellitas.jpg");
     background-size: 600px;
 }
+.MarioLuigi{
+    position: relative;
+    width: 90px;
+    height: auto;
+    /* Duración de 8 segundos, movimiento lineal y bucle infinito */
+    animation: correrDeLadoALado 12s linear infinite;
+    z-index: 10;
+}
 
 /* ==========================================
    mediaquerris para ablet/movil
@@ -636,5 +646,13 @@ iframe {
 
     .footer-links a:hover {
         transform: translateX(0);
+    }
+}
+@keyframes correrDeLadoALado {
+    0% {
+        transform: translateX(-100px); /* Empieza fuera de la pantalla por la izquierda */
+    }
+    100% {
+        transform: translateX(100vw); /* Termina cruzando completamente hacia la derecha (ancho total del viewport) */
     }
 }
